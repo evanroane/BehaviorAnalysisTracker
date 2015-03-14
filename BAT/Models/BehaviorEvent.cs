@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -8,16 +10,14 @@ namespace BAT.Models
 {
     public class BehaviorEvent
     {
-        public int SessionID { get; set; } //FK Session.ID
-        public int InputID { get; set; } //FK Input.ID
-        public string InputName { get; set; } //FK Input.Name
-        public string InputType { get; set; } //FK Input.Type
+
+        [Key, ForeignKey("Session")]
+        public int SessionID { get; set; }
+
+        [Key, ForeignKey("Input")]
+        public int InputID { get; set; }
+       
         public int ObserverID { get; set; }
         public int Time { get; set; }
-    }
-
-    public class BehaviorEventsDbContext : DbContext
-    {
-        public DbSet<BehaviorEvent> BehaviorEvents { get; set; }
     }
 }

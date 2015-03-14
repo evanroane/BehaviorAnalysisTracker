@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
@@ -8,12 +10,9 @@ namespace BAT.Models
 {
     public class Participant
     {
-        public int SessionID { get; set; } //FK Session.ID
-        public int UserID { get; set; }
-    }
+        [Key, ForeignKey("Session")]
+        public int SessionID { get; set; }
 
-    public class ParticipantsDbContext : DbContext
-    {
-        public DbSet<Participant> Participants { get; set; }
+        public int UserID { get; set; }
     }
 }

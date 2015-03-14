@@ -15,9 +15,4 @@ namespace BAT.Models
         public string CodeSetName { get; set; }
         public string CodeSetDescription { get; set; }
     }
-    
-    public class CodeSetDbContext : DbContext
-    {
-        public DbSet<CodeSet> CodeSets { get; set; }
-    }
 }
