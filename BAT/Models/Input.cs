@@ -8,7 +8,7 @@ namespace BAT.Models
 {
     public class Input
     {
-        //FK: to CodeSetID
+        public int CodeSetID; //FK CodeSet.ID
         public int InputID;
         public string Name;
         public string InputType;

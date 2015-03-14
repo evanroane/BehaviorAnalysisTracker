@@ -8,11 +8,12 @@ namespace BAT.Models
 {
     public class BehaviorEvent
     {
-        public int SessionID; //FK
-        public int BehaviorEventID; //FK
+        public int SessionID; //FK Session.ID
+        public int InputID; //FK Input.ID
+        public string InputName; //FK Input.Name
+        public string InputType; //FK Input.Type
         public int ObserverID;
         public int Time;
-        public string BehaviorEventName; //FK
     }
 
     public class BehaviorEventsDbContext : DbContext

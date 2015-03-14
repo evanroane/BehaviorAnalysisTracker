@@ -8,8 +8,8 @@ namespace BAT.Models
 {
     public class Participant
     {
-        public int SessionID; //FK
-        public int UserID; //FK
+        public int SessionID; //FK Session.ID
+        public int UserID;
     }
 
     public class ParticipantsDbContext : DbContext

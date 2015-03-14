@@ -11,8 +11,8 @@ namespace BAT.Models
         public int SessionID;
         public string Name;
         public string Description;
-        public int CodeSetID; //FK
-        public int OwnerID; //FK
+        public int CodeSetID; //FK CodeSet.ID
+        public int OwnerID;
     }
 
     public class SessionsDbContext : DbContext
