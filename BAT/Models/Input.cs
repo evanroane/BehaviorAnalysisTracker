@@ -8,11 +8,11 @@ namespace BAT.Models
 {
     public class Input
     {
-        public int CodeSetID; //FK CodeSet.ID
-        public int InputID;
-        public string Name;
-        public string InputType;
-        public string Color;
+        public int CodeSetID { get; set; } //FK CodeSet.ID
+        public int InputID { get; set; }
+        public string Name { get; set; }
+        public string InputType { get; set; }
+        public string Color { get; set; }
     }
 
     public class InputsDbContext : DbContext

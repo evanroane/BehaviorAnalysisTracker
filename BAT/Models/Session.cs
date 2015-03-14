@@ -8,11 +8,11 @@ namespace BAT.Models
 {
     public class Session
     {
-        public int SessionID;
-        public string Name;
-        public string Description;
-        public int CodeSetID; //FK CodeSet.ID
-        public int OwnerID;
+        public int SessionID { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int CodeSetID { get; set; } //FK CodeSet.ID
+        public int OwnerID { get; set; }
     }
 
     public class SessionsDbContext : DbContext
