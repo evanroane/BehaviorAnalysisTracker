@@ -10,12 +10,23 @@ namespace BAT.Models
 {
     public class Input
     {
-        [Key, ForeignKey("CodeSet")]
+        //an Input row must be associated with a CodeSetID
+        [Required]
         public int CodeSetID { get; set; }
-        
+
+        [ForeignKey("CodeSetID")]
+        public virtual CodeSet CodeSet { get; set; }
+
+        [Required]
         public int InputID { get; set; }
+
+        [Required]
         public string InputName { get; set; }
-        public string InputType { get; set; }
+
+        [Required]
+        public string InputType { get; set; } //Event or Duration
+
+        [Required]
         public string InputColor { get; set; }
     }
 }

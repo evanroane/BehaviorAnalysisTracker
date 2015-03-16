@@ -10,14 +10,30 @@ namespace BAT.Models
 {
     public class Session
     {
-        [Key, ForeignKey("CodeSet")]
+        //other models may use SessionID
+        public int SessionID { get; set; }
+        public virtual ICollection<Session> Sessions { get; set; }
+        
+        //a session must have one CodeSetID
+        [Required]
         public int CodeSetID { get; set; }
 
+        [ForeignKey("CodeSetID")]
+        public virtual CodeSet CodeSet { get; set; }
+
+        //a session may have one or more ParticipantID
+        public Nullable<int> ParticipantID { get; set; }
+
+        [ForeignKey("ParticipantID")]
         public virtual Participant Participant { get; set; }
-        public int OwnerID { get; set; } //Connect to user ID?
+
+        [Required]
+        public int OwnerID { get; set; }
         
-        public int SessionID { get; set; }
+        [Required]
         public string SessionName { get; set; }
+        
+        [Required]
         public string SessionDescription { get; set; }
     }
 }
