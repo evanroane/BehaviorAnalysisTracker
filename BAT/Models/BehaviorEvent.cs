@@ -10,6 +10,15 @@ namespace BAT.Models
 {
     public class BehaviorEvent
     {
+        public BehaviorEvent(int sessionID, int inputID, int observerID)
+        {
+            this.SessionID = sessionID;
+            this.InputID = inputID;
+            this.ObserverID = observerID;
+        }
+        
+        public BehaviorEvent() { }
+
         //Each BehaviorEvent is associated with one SessionID
         [Required]
         public int SessionID { get; set; }

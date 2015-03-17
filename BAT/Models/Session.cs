@@ -10,6 +10,17 @@ namespace BAT.Models
 {
     public class Session
     {
+        public Session(int sessionID, int codeSetID, int ownerID, string sessionName, string sessionDescription, Nullable<int> participantID) 
+        {
+            this.CodeSetID = codeSetID;
+            this.OwnerID = ownerID;
+            this.SessionName = sessionName;
+            this.SessionDescription = sessionDescription;
+            this.ParticipantID = participantID;
+        }
+
+        public Session() { }
+        
         //other models may use SessionID
         public int SessionID { get; set; }
         public virtual ICollection<Session> Sessions { get; set; }

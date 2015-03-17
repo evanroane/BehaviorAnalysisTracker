@@ -8,6 +8,15 @@ namespace BAT.Models
 {
     public class CodeSetPermission
     {
+        public CodeSetPermission(int ownerId, int participantID, int codeSetID)
+        {
+            this.OwnerID = ownerId;
+            this.ParticipantID = participantID;
+            this.CodeSetID = codeSetID;
+        }
+        
+        public CodeSetPermission() { }
+
         [Required]
         public int OwnerID {get; set;}
 

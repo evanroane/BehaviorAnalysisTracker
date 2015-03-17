@@ -10,6 +10,15 @@ namespace BAT.Models
 {
     public class Input
     {
+        public Input(int codeSetID, string inputName, string inputType, string inputColor)
+        {
+            this.CodeSetID = codeSetID;
+            this.InputName = inputName;
+            this.InputType = inputType;
+            this.InputColor = inputColor;
+        }
+
+        public Input() { }
         //an Input row must be associated with a CodeSetID
         [Required]
         public int CodeSetID { get; set; }

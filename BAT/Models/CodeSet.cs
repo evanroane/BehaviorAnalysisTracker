@@ -13,6 +13,13 @@ namespace BAT.Models
 {
     public class CodeSet
     {
+        public CodeSet(string codeSetName, string codeSetDescription)
+        {
+            this.CodeSetName = codeSetName;
+            this.CodeSetDescription = codeSetDescription;
+        }
+        
+        public CodeSet() { }
         //Many other tables may access CodeSetId
         [Key]
         [Required]
