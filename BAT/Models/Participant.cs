@@ -19,6 +19,8 @@ namespace BAT.Models
 
         //a Participant may appear on a Session
         public int ParticipantID { get; set; }
-        public virtual Participant Participant { get; set; }
+
+        //Other models may access participants
+        public ICollection<Participant> Participants { get; set; }
     }
 }

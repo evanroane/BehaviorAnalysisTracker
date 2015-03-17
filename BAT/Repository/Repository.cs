@@ -5,7 +5,7 @@ using System.Web;
 
 namespace BAT.Repository
 {
-    public class GeneralRepository : IGeneralRepository
+    public class Repository : IRepository
     {
 
     }

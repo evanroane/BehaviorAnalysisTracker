@@ -175,8 +175,8 @@
     <Compile Include="Models\CodeSetPermission.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\GeneralRepository.cs" />
-    <Compile Include="Repository\IGeneralRepository.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\IRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
