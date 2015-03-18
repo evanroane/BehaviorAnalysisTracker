@@ -1,50 +1,89 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using BAT;
 using BAT.Models;
 
 namespace BAT.Repository
 {
     public class Repository : IRepository
     {
+        private BATDbContext _dbContext;
+
+        public Repository()
+        {
+            _dbContext = new BATDbContext();
+            _dbContext.CodeSets.Load();
+            _dbContext.Inputs.Load();
+            _dbContext.Sessions.Load();
+            _dbContext.BehaviorEvents.Load();
+            _dbContext.CodeSetPermissions.Load();
+            _dbContext.Sessions.Load();
+        }
+        
         public int GetCount()
         {
             throw new NotImplementedException();
         }
 
+        public BATDbContext Context()
+        {
+            return _dbContext;
+        }
+
         //Session: Create
         public void CreateSession(Session S) 
         {
-            throw new NotImplementedException();
+            _dbContext.Sessions.Add(S);
+            _dbContext.SaveChanges();
         }
+        
         //Session: Read
-        public void GetSessionID(Session S)
+        public int GetSessionID(string sessionName)
         {
-            throw new NotImplementedException();
+            var query = from Session in _dbContext.Sessions
+                        where Session.SessionName == sessionName
+                        select Session;
+            return query.First<Session>().SessionID;
         }
 
-        public void ReadSession(int id)
+        public Session ReadSession(int id)
         {
-            throw new NotImplementedException();
+            var query = from Session in _dbContext.Sessions
+                        where Session.SessionID == id
+                        select Session;
+            return query.First<Session>();
         }
 
-        public void AllSessions()
+        public List<Session> AllSessions(int UserID)
         {
-            throw new NotImplementedException();
+            var query = from Session in _dbContext.Sessions
+                        where Session.OwnerID == UserID
+                        select Session;
+            return query.ToList<Session>();
         }
 
         //Session: Update
-        public void ModifySession()
+        public void ModifySession(Session s, int sessionID, int codeSetID, int ownerID, string sessionName, string sessionDescription, Nullable<int> participantID)
         {
-            throw new NotImplementedException();
+            s.SessionID = sessionID;
+            s.CodeSetID = codeSetID;
+            s.OwnerID = ownerID;
+            s.SessionName = sessionName;
+            s.ParticipantID = participantID;
         }
 
         //Session: Delete
-        public void DeleteSession(int id)
+        public void DeleteSessionByID(int id)
         {
-            throw new NotImplementedException();
+            Session s = ReadSession(id);
+            DeleteSession(s);
+        }
+
+        public void DeleteSession(Session s)
+        {
+            _dbContext.Sessions.Remove(s);
+            _dbContext.SaveChanges();
         }
 
         //Participant: Create
