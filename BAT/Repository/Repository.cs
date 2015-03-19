@@ -18,9 +18,23 @@ namespace BAT.Repository
             _dbContext.Sessions.Load();
             _dbContext.BehaviorEvents.Load();
             _dbContext.CodeSetPermissions.Load();
-            _dbContext.Sessions.Load();
         }
-        
+
+        public void Clear()
+        {
+            var codeSets = this.AllCodeSets();
+            var inputs = this.AllInputs();
+            var sessions = this.AllSessions();
+            var behaviorEvents = this.AllBehaviorEvents();
+            var codeSetPermissions = this.AllCodeSetPermissions();
+            _dbContext.CodeSets.RemoveRange(codeSets);
+            _dbContext.Inputs.RemoveRange(inputs);
+            _dbContext.Sessions.RemoveRange(sessions);
+            _dbContext.BehaviorEvents.RemoveRange(behaviorEvents);
+            _dbContext.CodeSetPermissions.RemoveRange(codeSetPermissions);
+            _dbContext.SaveChanges();
+        }
+
         public int GetCount()
         {
             throw new NotImplementedException();
@@ -39,6 +53,14 @@ namespace BAT.Repository
         }
         
         //Session: Read
+        public List<Session> AllSessions()
+        {
+            var query = from Session in _dbContext.Sessions
+                        select Session;
+            return query.ToList<Session>();
+        }
+
+
         public int GetSessionID(string sessionName)
         {
             var query = from Session in _dbContext.Sessions
@@ -116,6 +138,13 @@ namespace BAT.Repository
         }
 
         //Input: Read
+        public List<Input> AllInputs()
+        {
+            var query = from Input in _dbContext.Inputs
+                        select Input;
+            return query.ToList<Input>();
+        }
+        
         public void GetInputsByCodeSet()
         {
             throw new NotImplementedException();
@@ -145,6 +174,13 @@ namespace BAT.Repository
         }
 
         //BehaviorEvent: Read
+        public List<BehaviorEvent> AllBehaviorEvents()
+        {
+            var query = from BehaviorEvent in _dbContext.BehaviorEvents
+                        select BehaviorEvent;
+            return query.ToList<BehaviorEvent>();
+        }
+        
         public void GetEvent()
         {
             throw new NotImplementedException();
@@ -180,6 +216,13 @@ namespace BAT.Repository
         }
 
         //CodeSetPermissions: Read
+        public List<CodeSetPermission> AllCodeSetPermissions()
+        {
+            var query = from CodeSetPermission in _dbContext.CodeSetPermissions
+                        select CodeSetPermission;
+            return query.ToList<CodeSetPermission>();
+        }
+        
         public void GetPermission()
         {
             throw new NotImplementedException();
@@ -203,6 +246,13 @@ namespace BAT.Repository
         }
 
         //CodeSet: Read
+        public List<CodeSet> AllCodeSets()
+        {
+            var query = from CodeSet in _dbContext.CodeSets
+                        select CodeSet;
+            return query.ToList<CodeSet>();
+        }
+        
         public void GetCodeSet()
         {
             throw new NotImplementedException();

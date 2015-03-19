@@ -9,7 +9,21 @@ namespace BATTests
     [TestClass]
     public class TestRepository
     {
-        private Repository repo;
+        private static Repository repo;
+
+        [ClassInitialize]
+        public static void SetUp(TestContext _context)
+        {
+            repo = new Repository();
+            repo.Clear();
+        }
+
+        [ClassCleanup]
+        public static void CleanUp()
+        {
+            repo.Clear();
+        }
+
 
         [TestMethod]
         public void TestCreateSession()
