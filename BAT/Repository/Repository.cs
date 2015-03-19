@@ -15,9 +15,10 @@ namespace BAT.Repository
             _dbContext = new BATDbContext();
             _dbContext.CodeSets.Load();
             _dbContext.Inputs.Load();
+            _dbContext.CodeSetPermissions.Load();
+            _dbContext.Participants.Load();
             _dbContext.Sessions.Load();
             _dbContext.BehaviorEvents.Load();
-            _dbContext.CodeSetPermissions.Load();
         }
 
         public void Clear()

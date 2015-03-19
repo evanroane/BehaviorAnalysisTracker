@@ -10,11 +10,11 @@ namespace BAT.Models
 {
     public class BehaviorEvent
     {
-        public BehaviorEvent(int sessionID, int inputID, int observerID)
+        public BehaviorEvent(string observerID, int sessionID, int inputID)
         {
+            this.ObserverID = observerID;
             this.SessionID = sessionID;
             this.InputID = inputID;
-            this.ObserverID = observerID;
         }
         
         public BehaviorEvent() { }
@@ -34,7 +34,7 @@ namespace BAT.Models
         public virtual Input Input { get; set; }
 
         [Required]
-        public int ObserverID { get; set; }
+        public string ObserverID { get; set; }
 
         [Required]
         public int Time { get; set; }

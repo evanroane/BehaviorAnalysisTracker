@@ -10,13 +10,12 @@ namespace BAT.Models
 {
     public class Session
     {
-        public Session(int sessionID, int codeSetID, int ownerID, string sessionName, string sessionDescription, Nullable<int> participantID) 
+        public Session(int codeSetID, string ownerID, string sessionName, string sessionDescription) 
         {
             this.CodeSetID = codeSetID;
             this.OwnerID = ownerID;
             this.SessionName = sessionName;
             this.SessionDescription = sessionDescription;
-            this.ParticipantID = participantID;
         }
 
         public Session() { }
@@ -32,14 +31,8 @@ namespace BAT.Models
         [ForeignKey("CodeSetID")]
         public virtual CodeSet CodeSet { get; set; }
 
-        //a session may have one or more ParticipantID
-        public Nullable<int> ParticipantID { get; set; }
-
-        [ForeignKey("ParticipantID")]
-        public virtual Participant Participant { get; set; }
-
         [Required]
-        public int OwnerID { get; set; }
+        public string OwnerID { get; set; }
         
         [Required]
         public string SessionName { get; set; }

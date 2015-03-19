@@ -10,10 +10,11 @@ namespace BAT.Models
 {
     public class Participant
     {
-        public Participant(int participantID, int sessionId, int collaborator)
+        public Participant(int sessionId, string ownerID, string participantID)
         {
             this.SessionID = sessionId;
-            this.Collaborator = collaborator;
+            this.OwnerID = ownerID;
+            this.ParticipantID = participantID;
         }
         
         public Participant() { }
@@ -26,10 +27,10 @@ namespace BAT.Models
         public virtual Session Session { get; set; }
 
         [Required]
-        public int Collaborator { get; set; }
+        public string OwnerID { get; set; }
 
         //a Participant may appear on a Session
-        public int ParticipantID { get; set; }
+        public string ParticipantID { get; set; }
 
         //Other models may access participants
         public ICollection<Participant> Participants { get; set; }
