@@ -12,7 +12,7 @@ namespace BAT.Models
     {
         public Session(int codeSetID, string ownerID, string sessionName, string sessionDescription) 
         {
-            this.CodeSetID = codeSetID;
+            this.CodeSet = codeSetID;
             this.OwnerID = ownerID;
             this.SessionName = sessionName;
             this.SessionDescription = sessionDescription;
@@ -26,10 +26,7 @@ namespace BAT.Models
         
         //a session must have one CodeSetID
         [Required]
-        public int CodeSetID { get; set; }
-
-        [ForeignKey("CodeSetID")]
-        public virtual CodeSet CodeSet { get; set; }
+        public int CodeSet { get; set; }
 
         [Required]
         public string OwnerID { get; set; }

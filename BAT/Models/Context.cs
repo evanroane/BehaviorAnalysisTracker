@@ -14,5 +14,6 @@ namespace BAT.Models
         public DbSet<CodeSet> CodeSets { get; set; }
         public DbSet<Session> Sessions { get; set; }
         public DbSet<CodeSetPermission> CodeSetPermissions { get; set; }
+        public DbSet<SessionPermission> SessionPermissions { get; set; }
     }
 }

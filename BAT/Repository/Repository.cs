@@ -19,6 +19,7 @@ namespace BAT.Repository
             _dbContext.Participants.Load();
             _dbContext.Sessions.Load();
             _dbContext.BehaviorEvents.Load();
+            _dbContext.SessionPermissions.Load();
         }
 
         public void Clear()
@@ -28,6 +29,7 @@ namespace BAT.Repository
             var sessions = this.AllSessions();
             var behaviorEvents = this.AllBehaviorEvents();
             var codeSetPermissions = this.AllCodeSetPermissions();
+            var sessionPermissions = this.AllSessionPermissions();
             _dbContext.CodeSets.RemoveRange(codeSets);
             _dbContext.Inputs.RemoveRange(inputs);
             _dbContext.Sessions.RemoveRange(sessions);
@@ -36,14 +38,27 @@ namespace BAT.Repository
             _dbContext.SaveChanges();
         }
 
-        public int GetCount()
+        public List<SessionPermission> AllSessionPermissions()
         {
-            throw new NotImplementedException();
+            var query = from SessionPermission in _dbContext.SessionPermissions
+                        select SessionPermission;
+            return query.ToList<SessionPermission>();
         }
 
         public BATDbContext Context()
         {
             return _dbContext;
+        }
+
+        public int GetCountCodeSets()
+        {
+            return _dbContext.CodeSets.Count<CodeSet>();
+            //int inputs = _dbContext.Inputs.Count<Input>();
+            //int codeSetPermissions = _dbContext.CodeSetPermissions.Count<CodeSetPermission>();
+            //int sessions = _dbContext.Sessions.Count<Session>();
+            //int behaviorEvents = _dbContext.BehaviorEvents.Count<BehaviorEvent>();
+            //int sessionPermission = _dbContext.SessionPermissions.Count<SessionPermission>();
+            //int participants = _dbContext.Participants.Count<Participant>();
         }
 
         //Session: Create
@@ -78,7 +93,7 @@ namespace BAT.Repository
             return query.First<Session>();
         }
 
-        public List<Session> AllSessions(int UserID)
+        public List<Session> AllSessions(string UserID)
         {
             var query = from Session in _dbContext.Sessions
                         where Session.OwnerID == UserID
@@ -87,13 +102,9 @@ namespace BAT.Repository
         }
 
         //Session: Update
-        public void ModifySession(Session s, int sessionID, int codeSetID, int ownerID, string sessionName, string sessionDescription, Nullable<int> participantID)
+        public void ModifySessionName(Session s, string sessionName)
         {
-            s.SessionID = sessionID;
-            s.CodeSetID = codeSetID;
-            s.OwnerID = ownerID;
             s.SessionName = sessionName;
-            s.ParticipantID = participantID;
         }
 
         //Session: Delete
@@ -110,32 +121,36 @@ namespace BAT.Repository
         }
 
         //Participant: Create
-        public void AddParticipant()
+        public void AddParticipant(string ownerID, string participantID, int sessionID)
         {
-            throw new NotImplementedException();
+            Participant part = new Participant();
+            part.OwnerID = ownerID;
+            part.ParticipantID = participantID;
+            part.SessionID = sessionID;
         }
         
         //Participant: Read
-        public void CheckParticipant()
+        public List<Participant> AllParticipants(int sessionID)
         {
-            throw new NotImplementedException();
-        }
-
-        public void AllParticipants()
-        {
-            throw new NotImplementedException();
+            var query = from Participant in _dbContext.Participants
+                        where Participant.SessionID == sessionID
+                        select Participant;
+            return query.ToList<Participant>();
         }
 
         //Participant: Delete
-        public void RemoveParticipant()
+        public void RemoveParticipant(Participant P)
         {
-            throw new NotImplementedException();
+            _dbContext.Participants.Remove(P);
         }
 
         //Input: Create
-        public void CreateInput()
+        public void CreateInput(string name, string inputType, string inputColor)
         {
-            throw new NotImplementedException();
+            Input I = new Input();
+            I.InputName = name;
+            I.InputType = inputType;
+            I.InputColor = inputColor;
         }
 
         //Input: Read
@@ -146,20 +161,20 @@ namespace BAT.Repository
             return query.ToList<Input>();
         }
         
-        public void GetInputsByCodeSet()
+        public List<Input> GetInputsByCodeSetID(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public void GetInput()
-        {
-            throw new NotImplementedException();
+            var query = from Input in _dbContext.Inputs
+                        where Input.CodeSetID == id
+                        select Input;
+            return query.ToList<Input>();
         }
 
         //Input: Update
-        public void UpdateInput()
+        public void UpdateInput(Input I, string name, string inputType, string inputColor)
         {
-            throw new NotImplementedException();
+            I.InputName = name;
+            I.InputType = inputType;
+            I.InputColor = inputColor;
         }
 
         //Input: Delete
@@ -169,6 +184,11 @@ namespace BAT.Repository
         }
 
         //BehaviorEvent: Create
+        public void CreateBehaviorEvent(BehaviorEvent BE)
+        {
+            throw new NotImplementedException();
+        }
+
         public void AddEvent()
         {
             throw new NotImplementedException();
@@ -241,9 +261,10 @@ namespace BAT.Repository
         }
 
         //CodeSet: Create
-        public void CreateCodeSet()
+        public void CreateCodeSet(CodeSet C)
         {
-            throw new NotImplementedException();
+            _dbContext.CodeSets.Add(C);
+            _dbContext.SaveChanges();
         }
 
         //CodeSet: Read
@@ -271,5 +292,16 @@ namespace BAT.Repository
             throw new NotImplementedException();
         }
 
+
+
+        public void CreateSessionPermission(SessionPermission SP)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void CreateParticipant(Participant P)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

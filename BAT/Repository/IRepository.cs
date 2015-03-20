@@ -6,41 +6,39 @@ namespace BAT.Repository
 {
     public interface IRepository
     {
-        int GetCount();
+        int GetCountCodeSets();
         
         //Session: Create
         void CreateSession(Session S);
         //Session: Read
         int GetSessionID(string sessionName);
         Session ReadSession(int id);
-        List<Session> AllSessions(int UserID);
+        List<Session> AllSessions(string UserID);
         //Session: Update
-        void ModifySession(Session s, int sessionID, int codeSetID, int ownerID, string sessionName, string sessionDescription,  Nullable<int> participantID);
+        void ModifySessionName(Session s, string sessionName);
         //Session: Delete
         void DeleteSessionByID(int id);
         void DeleteSession(Session s);
 
 
         //Participant: Create
-        void AddParticipant();
+        void AddParticipant(string ownerID, string participantID, int sessionID);
         //Participant: Read
-        void CheckParticipant();
-        void AllParticipants();
+        List<Participant> AllParticipants(int sessionID);
         //Participant: Delete
-        void RemoveParticipant();
+        void RemoveParticipant(Participant P);
 
         //Input: Create
-        void CreateInput();
+        void CreateInput(string name, string inputType, string inputColor);
         //Input: Read
-        void GetInputsByCodeSet();
-        void GetInput();
+        List<Input> GetInputsByCodeSetID(int id);
         //Input: Update
         void UpdateInput();
         //Input: Delete
         void DeleteInput();
 
         //BehaviorEvent: Create
-        void AddEvent();
+        void CreateBehaviorEvent(BehaviorEvent BE);
         //BehaviorEvent: Read
         void GetEvent();
         void GetEventsByCodeSet();
@@ -59,12 +57,15 @@ namespace BAT.Repository
         void RemovePermission();
 
         //CodeSet: Create
-        void CreateCodeSet();
+        void CreateCodeSet(CodeSet CS);
         //CodeSet: Read
         void GetCodeSet();
         //CodeSet: Update
         void UpdateCodeSet();
         //CodeSet: Delete
         void DeleteCodeSet();
+
+        //SessionPermissions: Read
+        List<SessionPermission> AllSessionPermissions();
     }
 }

@@ -25,5 +25,9 @@ namespace BAT.Models
 
         [Required]
         public string ParticipantID { get; set; }
+
+        [Key]
+        [Required]
+        public int PermissionID { get; set; }
     }
 }
