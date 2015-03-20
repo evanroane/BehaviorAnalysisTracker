@@ -28,7 +28,7 @@ namespace BAT.Repository
             var inputs = this.AllInputs();
             var sessions = this.AllSessions();
             var behaviorEvents = this.AllBehaviorEvents();
-            var codeSetPermissions = this.AllCodeSetPermissions();
+            var codeSetPermissions = this.GetAllPermissions();
             var sessionPermissions = this.AllSessionPermissions();
             _dbContext.CodeSets.RemoveRange(codeSets);
             _dbContext.Inputs.RemoveRange(inputs);
@@ -36,13 +36,6 @@ namespace BAT.Repository
             _dbContext.BehaviorEvents.RemoveRange(behaviorEvents);
             _dbContext.CodeSetPermissions.RemoveRange(codeSetPermissions);
             _dbContext.SaveChanges();
-        }
-
-        public List<SessionPermission> AllSessionPermissions()
-        {
-            var query = from SessionPermission in _dbContext.SessionPermissions
-                        select SessionPermission;
-            return query.ToList<SessionPermission>();
         }
 
         public BATDbContext Context()
@@ -202,28 +195,29 @@ namespace BAT.Repository
                         select BehaviorEvent;
             return query.ToList<BehaviorEvent>();
         }
-        
-        public void GetEvent()
-        {
-            throw new NotImplementedException();
-        }
 
-        public void GetEventsByCodeSet()
+        public List<BehaviorEvent> GetEventsBySessionID(int id)
         {
-            throw new NotImplementedException();
-        }
-
-        public void GetEventsBySession()
-        {
-            throw new NotImplementedException();
+            var query = from BehaviorEvent in _dbContext.BehaviorEvents
+                        where BehaviorEvent.SessionID == id
+                        select BehaviorEvent;
+            return query.ToList<BehaviorEvent>();
         }
         
         //BehaviorEvent: Update
         
-        public void UpdateEvent()
+        public void UpdateEventInput(BehaviorEvent BE, int inputID)
         {
-            throw new NotImplementedException();
+            BE.InputID = inputID;
+            _dbContext.SaveChanges();
         }
+
+        public void UpdateEventSeconds(BehaviorEvent BE, int seconds)
+        {
+            BE.Seconds = seconds;
+            _dbContext.SaveChanges();
+        }
+
 
         //BehaviorEvent: Delete
         public void DeleteEvent(BehaviorEvent BE)
@@ -233,29 +227,31 @@ namespace BAT.Repository
         }
 
         //CodeSetPermissions: Create
-        public void GrantPermission()
+        public void GrantPermission(string ownerID, string participantID, int codeSetID)
         {
-            throw new NotImplementedException();
+            CodeSetPermission CSP = new CodeSetPermission();
+            CSP.OwnerID = ownerID;
+            CSP.ParticipantID = participantID;
+            CSP.CodeSetID = codeSetID;
         }
 
         //CodeSetPermissions: Read
-        public List<CodeSetPermission> AllCodeSetPermissions()
+        public List<CodeSetPermission> GetAllPermissions()
         {
             var query = from CodeSetPermission in _dbContext.CodeSetPermissions
                         select CodeSetPermission;
             return query.ToList<CodeSetPermission>();
         }
+
         
-        public void GetPermission()
+        public List<CodeSetPermission> GetUserPermissions(string userID)
         {
-            throw new NotImplementedException();
+            var query = from CodeSetPermission in _dbContext.CodeSetPermissions
+                        where CodeSetPermission.ParticipantID == userID
+                        select CodeSetPermission;
+            return query.ToList<CodeSetPermission>();
         }
-
-        public void GetUserPermissions()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         //CodeSetPermissions: Delete
         public void RemoveCodeSetPermission(CodeSetPermission CSP)
         {
@@ -295,9 +291,16 @@ namespace BAT.Repository
         }
 
         //CodeSet: Update
-        public void UpdateCodeSet()
+        public void UpdateCodeSetName(CodeSet CS, string newName)
         {
-            throw new NotImplementedException();
+            CS.CodeSetName = newName;
+            _dbContext.SaveChanges();
+        }
+
+        public void UpdateCodeSetDescription(CodeSet CS, string newDescription)
+        {
+            CS.CodeSetDescription = newDescription;
+            _dbContext.SaveChanges();
         }
 
         //CodeSet: Delete
@@ -307,16 +310,44 @@ namespace BAT.Repository
             _dbContext.SaveChanges();
         }
 
-
-
+        //SessionPermission: Create
         public void CreateSessionPermission(SessionPermission SP)
         {
             throw new NotImplementedException();
         }
 
-        public void CreateParticipant(Participant P)
+        //SessionPermission: Read
+        public List<SessionPermission> GetSessionPermissionByUserID(string userID)
         {
-            throw new NotImplementedException();
+            var query = from SessionPermission in _dbContext.SessionPermissions
+                        where SessionPermission.ParticipantID == userID
+                        select SessionPermission;
+            return query.ToList<SessionPermission>();
         }
+
+        public List<SessionPermission> AllSessionPermissions()
+        {
+            var query = from SessionPermission in _dbContext.SessionPermissions
+                        select SessionPermission;
+            return query.ToList<SessionPermission>();
+        }
+
+        //Session Permission: Delete
+        public void DeleteSessionPermission(SessionPermission SP)
+        {
+            _dbContext.SessionPermissions.Remove(SP);
+            _dbContext.SaveChanges();
+        }
+
+        public void DeleteSessionPermissionByID(int id)
+        {
+            var query = from SessionPermission in _dbContext.SessionPermissions
+                        where SessionPermission.PermissionID == id
+                        select SessionPermission;
+            SessionPermission selected = query.First<SessionPermission>();
+            DeleteSessionPermission(selected);
+        }
+
+
     }
 }

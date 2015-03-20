@@ -40,19 +40,18 @@ namespace BAT.Repository
         //BehaviorEvent: Create
         void CreateBehaviorEvent(int sessionID, string observerID, int seconds);
         //BehaviorEvent: Read
-        void GetEvent();
-        void GetEventsByCodeSet();
-        void GetEventsBySession();
+        List<BehaviorEvent> GetEventsBySessionID(int id);
         //BehaviorEvent: Update
-        void UpdateEvent();
+        void UpdateEventInput(BehaviorEvent BE, int inputID);
+        void UpdateEventSeconds(BehaviorEvent BE, int seconds);
         //BehaviorEvent: Delete
         void DeleteEvent(BehaviorEvent BE);
 
         //CodeSetPermissions: Create
-        void GrantPermission();
+        void GrantPermission(string ownerID, string participantID, int codeSetID);
         //CodeSetPermissions: Read
-        void GetPermission();
-        void GetUserPermissions();
+        List<CodeSetPermission> GetAllPermissions();
+        List<CodeSetPermission> GetUserPermissions(string userID);
         //CodeSetPermissions: Delete
         void RemoveCodeSetPermission(CodeSetPermission CSP);
 
@@ -62,11 +61,21 @@ namespace BAT.Repository
         CodeSet GetCodeSetByID(int id);
         CodeSet GetCodeSetByName(string name);
         //CodeSet: Update
-        void UpdateCodeSet();
+        void UpdateCodeSetName(CodeSet CS, string newName);
+
         //CodeSet: Delete
-        void DeleteCodeSet(CodeSet CS);
+        void UpdateCodeSetDescription(CodeSet CS, string newDescription);
+
+        //SessionPermissions: Create
+        void CreateSessionPermission(SessionPermission SP);
 
         //SessionPermissions: Read
+        List<SessionPermission> GetSessionPermissionByUserID(string userID);
         List<SessionPermission> AllSessionPermissions();
+
+        //SessionPermissions: Delete
+        void DeleteSessionPermission(SessionPermission SP);
+        void DeleteSessionPermissionByID(int id);
+
     }
 }
