@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 
 namespace BAT.Controllers
 {
@@ -10,6 +11,7 @@ namespace BAT.Controllers
     {
         public ActionResult Index()
         {
+            //User.Identity.GetUserId();
             return View();
         }
 
