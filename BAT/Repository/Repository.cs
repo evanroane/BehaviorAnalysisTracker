@@ -142,6 +142,7 @@ namespace BAT.Repository
         public void RemoveParticipant(Participant P)
         {
             _dbContext.Participants.Remove(P);
+            _dbContext.SaveChanges();
         }
 
         //Input: Create
@@ -175,23 +176,23 @@ namespace BAT.Repository
             I.InputName = name;
             I.InputType = inputType;
             I.InputColor = inputColor;
+            _dbContext.SaveChanges();
         }
 
         //Input: Delete
-        public void DeleteInput()
+        public void DeleteInput(Input I)
         {
-            throw new NotImplementedException();
+            _dbContext.Inputs.Remove(I);
+            _dbContext.SaveChanges();
         }
 
         //BehaviorEvent: Create
-        public void CreateBehaviorEvent(BehaviorEvent BE)
+        public void CreateBehaviorEvent(int sessionID, string observerID, int seconds)
         {
-            throw new NotImplementedException();
-        }
-
-        public void AddEvent()
-        {
-            throw new NotImplementedException();
+            BehaviorEvent BE = new BehaviorEvent();
+            BE.SessionID = sessionID;
+            BE.ObserverID = observerID;
+            BE.Seconds = seconds;
         }
 
         //BehaviorEvent: Read
@@ -225,9 +226,10 @@ namespace BAT.Repository
         }
 
         //BehaviorEvent: Delete
-        public void DeleteEvent()
+        public void DeleteEvent(BehaviorEvent BE)
         {
-            throw new NotImplementedException();
+            _dbContext.BehaviorEvents.Remove(BE);
+            _dbContext.SaveChanges();
         }
 
         //CodeSetPermissions: Create
@@ -255,9 +257,10 @@ namespace BAT.Repository
         }
 
         //CodeSetPermissions: Delete
-        public void RemovePermission()
+        public void RemoveCodeSetPermission(CodeSetPermission CSP)
         {
-            throw new NotImplementedException();
+            _dbContext.CodeSetPermissions.Remove(CSP);
+            _dbContext.SaveChanges();
         }
 
         //CodeSet: Create
@@ -275,9 +278,20 @@ namespace BAT.Repository
             return query.ToList<CodeSet>();
         }
         
-        public void GetCodeSet()
+        public CodeSet GetCodeSetByID(int id)
         {
-            throw new NotImplementedException();
+            var query = from CodeSet in _dbContext.CodeSets
+                        where CodeSet.CodeSetID == id
+                        select CodeSet;
+            return query.First<CodeSet>();
+        }
+
+        public CodeSet GetCodeSetByName(string name)
+        {
+            var query = from CodeSet in _dbContext.CodeSets
+                        where CodeSet.CodeSetName == name
+                        select CodeSet;
+            return query.First<CodeSet>();
         }
 
         //CodeSet: Update
@@ -287,9 +301,10 @@ namespace BAT.Repository
         }
 
         //CodeSet: Delete
-        public void DeleteCodeSet()
+        public void DeleteCodeSet(CodeSet CS)
         {
-            throw new NotImplementedException();
+            _dbContext.CodeSets.Remove(CS);
+            _dbContext.SaveChanges();
         }
 
 

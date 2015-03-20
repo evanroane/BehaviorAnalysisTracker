@@ -33,12 +33,12 @@ namespace BAT.Repository
         //Input: Read
         List<Input> GetInputsByCodeSetID(int id);
         //Input: Update
-        void UpdateInput();
+        void UpdateInput(Input I, string name, string inputType, string inputColor);
         //Input: Delete
-        void DeleteInput();
+        void DeleteInput(Input I);
 
         //BehaviorEvent: Create
-        void CreateBehaviorEvent(BehaviorEvent BE);
+        void CreateBehaviorEvent(int sessionID, string observerID, int seconds);
         //BehaviorEvent: Read
         void GetEvent();
         void GetEventsByCodeSet();
@@ -46,7 +46,7 @@ namespace BAT.Repository
         //BehaviorEvent: Update
         void UpdateEvent();
         //BehaviorEvent: Delete
-        void DeleteEvent();
+        void DeleteEvent(BehaviorEvent BE);
 
         //CodeSetPermissions: Create
         void GrantPermission();
@@ -54,16 +54,17 @@ namespace BAT.Repository
         void GetPermission();
         void GetUserPermissions();
         //CodeSetPermissions: Delete
-        void RemovePermission();
+        void RemoveCodeSetPermission(CodeSetPermission CSP);
 
         //CodeSet: Create
         void CreateCodeSet(CodeSet CS);
         //CodeSet: Read
-        void GetCodeSet();
+        CodeSet GetCodeSetByID(int id);
+        CodeSet GetCodeSetByName(string name);
         //CodeSet: Update
         void UpdateCodeSet();
         //CodeSet: Delete
-        void DeleteCodeSet();
+        void DeleteCodeSet(CodeSet CS);
 
         //SessionPermissions: Read
         List<SessionPermission> AllSessionPermissions();
