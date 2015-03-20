@@ -193,6 +193,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Scripts\App\auth\auth.factory.js" />
+    <Content Include="Scripts\App\auth\auth.routes.js" />
+    <Content Include="Scripts\App\auth\authcontrollers.js" />
     <Content Include="Scripts\App\Dashboard\analyzedata.controller.js" />
     <Content Include="Scripts\App\Dashboard\codesets.controller.js" />
     <Content Include="Scripts\App\Dashboard\codesets.factory.js" />
