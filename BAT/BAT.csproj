@@ -191,7 +191,6 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Input.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\CodeSetPermission.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Models\SessionPermission.cs" />
