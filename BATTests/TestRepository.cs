@@ -13,7 +13,7 @@ namespace BATTests
     [TestClass]
     public class TestRepository
     {
-        private static Repository repo;
+        private static BATRepository repo;
 
         //DataForTests
         static string firstUserId = "2ec05fb5-f4b7-4a27-89f8-c994312416ad";
@@ -29,7 +29,7 @@ namespace BATTests
         [ClassInitialize]
         public static void SetUp(TestContext _context)
         {
-            repo = new Repository();
+            repo = new BATRepository();
             repo.Clear();
         }
 

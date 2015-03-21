@@ -4,7 +4,7 @@ using System;
 
 namespace BAT.Repository
 {
-    public interface IRepository
+    public interface IBATRepository
     {
         int GetCountCodeSets();
         
@@ -19,14 +19,6 @@ namespace BAT.Repository
         //Session: Delete
         void DeleteSessionByID(int id);
         void DeleteSession(Session s);
-
-
-        //Participant: Create
-        void AddParticipant(string ownerID, string participantID, int sessionID);
-        //Participant: Read
-        List<Participant> AllParticipants(int sessionID);
-        //Participant: Delete
-        void RemoveParticipant(Participant P);
 
         //Input: Create
         void CreateInput(string name, string inputType, string inputColor);

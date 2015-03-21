@@ -6,17 +6,16 @@ using BAT.Models;
 
 namespace BAT.Repository
 {
-    public class Repository : IRepository
+    public class BATRepository : IBATRepository
     {
         private BATDbContext _dbContext;
 
-        public Repository()
+        public BATRepository()
         {
             _dbContext = new BATDbContext();
             _dbContext.CodeSets.Load();
             _dbContext.Inputs.Load();
             _dbContext.CodeSetPermissions.Load();
-            _dbContext.Participants.Load();
             _dbContext.Sessions.Load();
             _dbContext.BehaviorEvents.Load();
             _dbContext.SessionPermissions.Load();
@@ -51,7 +50,6 @@ namespace BAT.Repository
             //int sessions = _dbContext.Sessions.Count<Session>();
             //int behaviorEvents = _dbContext.BehaviorEvents.Count<BehaviorEvent>();
             //int sessionPermission = _dbContext.SessionPermissions.Count<SessionPermission>();
-            //int participants = _dbContext.Participants.Count<Participant>();
         }
 
         //Session: Create
@@ -110,31 +108,6 @@ namespace BAT.Repository
         public void DeleteSession(Session s)
         {
             _dbContext.Sessions.Remove(s);
-            _dbContext.SaveChanges();
-        }
-
-        //Participant: Create
-        public void AddParticipant(string ownerID, string participantID, int sessionID)
-        {
-            Participant part = new Participant();
-            part.OwnerID = ownerID;
-            part.ParticipantID = participantID;
-            part.SessionID = sessionID;
-        }
-        
-        //Participant: Read
-        public List<Participant> AllParticipants(int sessionID)
-        {
-            var query = from Participant in _dbContext.Participants
-                        where Participant.SessionID == sessionID
-                        select Participant;
-            return query.ToList<Participant>();
-        }
-
-        //Participant: Delete
-        public void RemoveParticipant(Participant P)
-        {
-            _dbContext.Participants.Remove(P);
             _dbContext.SaveChanges();
         }
 
