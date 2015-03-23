@@ -24,7 +24,6 @@ namespace BATTests
         static Session S = new Session(CS.CodeSetID, firstUserId, "Bellevue Middle", "one on one");
         static BehaviorEvent BE = new BehaviorEvent(firstUserId, S.SessionID, I.InputID, 5);
         static SessionPermission SP = new SessionPermission(firstUserId, secondUserId, S.SessionID);
-        static Participant P = new Participant(S.SessionID, firstUserId, secondUserId);
 
         [ClassInitialize]
         public static void SetUp(TestContext _context)

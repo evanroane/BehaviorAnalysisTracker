@@ -183,6 +183,10 @@
     <Compile Include="Migrations\201503200116387_Initial.Designer.cs">
       <DependentUpon>201503200116387_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201503211609388_RemoveParticipants.cs" />
+    <Compile Include="Migrations\201503211609388_RemoveParticipants.Designer.cs">
+      <DependentUpon>201503211609388_RemoveParticipants.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BehaviorEvent.cs" />
@@ -273,6 +277,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -284,6 +289,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201503200116387_Initial.resx">
       <DependentUpon>201503200116387_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503211609388_RemoveParticipants.resx">
+      <DependentUpon>201503211609388_RemoveParticipants.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
