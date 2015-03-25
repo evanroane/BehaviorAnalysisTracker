@@ -15,7 +15,54 @@ namespace BAT.Migrations
 
         protected override void Seed(BAT.Models.BATDbContext context)
         {
-            //context.BehaviorEvents.A
+            {
+  "codeSetId" : "Classroom Behavior",
+  "description" : "Designed to observe a targeted student's behavior during classroom instruction",
+  "inputs" : [ {
+    "color" : "btn-primary",
+    "name" : "Praise"
+  }, {
+    "color" : "btn-primary",
+    "name" : "Reprimand"
+  }, {
+    "color" : "btn-primary",
+    "name" : "OTR"
+  }, {
+    "color" : "btn-primary",
+    "name" : "Response"
+  }, {
+    "color" : "btn-primary",
+    "name" : "Nonresponse"
+  }, {
+    "color" : "btn-primary",
+    "name" : "Verbal_disruptive"
+  }, {
+    "color" : "btn-primary",
+    "name" : "Phys_disruptive"
+  }
+            
+            
+            
+            //context.CodeSets;
+            context.Inputs.AddOrUpdate<Input>(i => i.InputID,
+            new Input
+                {
+                    InputName = "aggression",
+                    InputType = "event",
+                    InputColor = "btn-default" 
+                }
+
+
+
+
+
+            );
+            //context.CodeSetPermissions;
+            //context.Sessions;
+            //context.SessionPermissions;
+            //context.BehaviorEvents;
+            
+            
         }
     }
 }
