@@ -263,6 +263,14 @@ namespace BAT.Repository
             return query.First<CodeSet>();
         }
 
+        public IEnumerable<CodeSet> GetCodeSetByUserID(string UserID)
+        {
+            var query = from CodeSet in _dbContext.CodeSets
+                        where CodeSet.CodeSetOwner == UserID
+                        select CodeSet;
+            return query.ToList();
+        }
+
         //CodeSet: Update
         public void UpdateCodeSetName(CodeSet CS, string newName)
         {
