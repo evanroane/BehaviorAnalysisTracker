@@ -34,23 +34,25 @@ namespace BAT.Migrations
         protected override void Seed(BAT.Models.BATDbContext context)
         {
             {
+                //ApplicationDbContext userContext = new ApplicationDbContext();
+                //AddUsers(userContext);    
+                
+                //context.CodeSets.AddOrUpdate<CodeSet>(i => i.CodeSetID,
+                //    new CodeSet
+                //    { 
+                //        CodeSetOwner = ""
+                //    }
 
-                context.CodeSets.AddOrUpdate<CodeSet>(i => i.CodeSetID,
-                    new CodeSet
-                    { 
-                        CodeSetOwner = ""    
-                    }
-
-                );
+                //);
  
-                context.Inputs.AddOrUpdate<Input>(i => i.InputID,
-                new Input
-                    {
-                        InputName = "aggression",
-                        InputType = "event",
-                        InputColor = "btn-default"
-                    }
-                );
+                //context.Inputs.AddOrUpdate<Input>(i => i.InputID,
+                //new Input
+                //    {
+                //        InputName = "aggression",
+                //        InputType = "event",
+                //        InputColor = "btn-default"
+                //    }
+                //);
                 //context.CodeSetPermissions;
                 //context.Sessions;
                 //context.SessionPermissions;
