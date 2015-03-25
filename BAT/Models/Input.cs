@@ -19,7 +19,7 @@ namespace BAT.Models
         }
 
         public Input() { }
-        //an Input row must be associated with a CodeSetID
+
         [Required]
         public int CodeSetID { get; set; }
 

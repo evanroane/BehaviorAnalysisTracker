@@ -20,9 +20,9 @@ namespace BAT.Models
 
         public Session() { }
         
-        //other models may use SessionID
+        [Key]
+        [Required]
         public int SessionID { get; set; }
-        public virtual ICollection<Session> Sessions { get; set; }
         
         //a session must have one CodeSetID
         [Required]

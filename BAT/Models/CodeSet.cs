@@ -21,13 +21,10 @@ namespace BAT.Models
         }
         
         public CodeSet() { }
-        //Many other tables may access CodeSetId
+
         [Key]
         [Required]
         public int CodeSetID { get; set; }
-
-        //Many other tables may access CodeSetId
-        public ICollection<CodeSet> CodeSets { get; set; }
 
         [Required]
         public string CodeSetName { get; set; }

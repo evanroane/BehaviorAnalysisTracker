@@ -20,14 +20,9 @@ namespace BAT.Models
         
         public BehaviorEvent() { }
 
-        //Each BehaviorEvent is associated with one SessionID
         [Required]
         public int SessionID { get; set; }
 
-        [ForeignKey("SessionID")]
-        public virtual Session Session { get; set; }
-
-        //Each BehaviorEvent has one InputID
         [Required]
         public int InputID { get; set; }
 
