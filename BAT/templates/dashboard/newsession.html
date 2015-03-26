@@ -1,0 +1,42 @@
+<div ui-content-for="title">
+  <span>Start New Session</span>
+</div>
+
+<div class="scrollable">
+  <div class="scrollable-content">
+
+    <div class='section'>
+      <div class="pull-left">
+        <h4>
+          Select a Code Set to Begin a New Session
+        </h4>
+      </div>
+      <div class="pull-right">
+        <a class="btn btn-default" href="/#/mydashboard">
+          <i class="fa fa-tachometer fa-lg"></i>
+          My Dashboard
+        </a>
+      </div>
+    </div>
+
+    <div class='section'>
+      <div ng-repeat="(codeSetId, codeSet) in viewCodeSet.codeSet">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="btn-group pull-right">
+              <a class="btn btn-default btn-sm" href="/#/codeset/{{codeSetId}}">
+                Begin
+                  <i class="fa fa-play"></i>
+              </a>
+          </div>
+          <h3 class="panel-title">{{codeSet.codeSetId}}</h3>
+        </div>
+        <div class="panel-body">
+          {{codeSet.description}}
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </div>
+</div>

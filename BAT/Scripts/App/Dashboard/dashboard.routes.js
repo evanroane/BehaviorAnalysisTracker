@@ -5,7 +5,7 @@
       .config(function ($routeProvider) {
           $routeProvider.when('/newsession',
             {
-                templateUrl: 'views/dashboard/newsession.html',
+                templateUrl: '../../../templates/dashboard/newsession.html',
                 controller: 'ShowCodeSetController',
                 controllerAs: 'viewCodeSet',
                 private: true,
@@ -14,7 +14,7 @@
           );
           $routeProvider.when('/previoussessiondata',
             {
-                templateUrl: 'views/dashboard/previoussessiondata.html',
+                templateUrl: '../../../templates/dashboard/previoussessiondata.html',
                 controller: 'SessionDataController',
                 controllerAs: 'dataSets',
                 private: true,
@@ -23,7 +23,7 @@
           );
           $routeProvider.when('/rawsessiondata/:id',
             {
-                templateUrl: 'views/dashboard/rawsessiondata.html',
+                templateUrl: '../../../templates/dashboard/rawsessiondata.html',
                 controller: 'AnalyzeDataController',
                 controllerAs: 'dataSet',
                 private: true,
@@ -32,7 +32,7 @@
           );
           $routeProvider.when('/download/:id',
             {
-                templateUrl: 'views/dashboard/download.html',
+                templateUrl: '../../../templates/dashboard/download.html',
                 controller: 'AnalyzeDataController',
                 controllerAs: 'dataSet',
                 private: true,
@@ -41,7 +41,7 @@
           );
           $routeProvider.when('/sessiondatasummary/:id',
             {
-                templateUrl: 'views/dashboard/sessiondatasummary.html',
+                templateUrl: '../../../templates/dashboard/sessiondatasummary.html',
                 controller: 'AnalyzeDataController',
                 controllerAs: 'dataSet',
                 private: true,
@@ -50,7 +50,7 @@
           );
           $routeProvider.when('/managecodesets',
             {
-                templateUrl: 'views/dashboard/managecodesets.html',
+                templateUrl: '../../../templates/dashboard/managecodesets.html',
                 controller: 'ShowCodeSetController',
                 controllerAs: 'viewCodeSet',
                 private: true,
@@ -59,7 +59,7 @@
           );
           $routeProvider.when('/newcodeset',
             {
-                templateUrl: 'views/dashboard/newcodeset.html',
+                templateUrl: '../../../templates/dashboard/newcodeset.html',
                 controller: 'CodeSetController',
                 controllerAs: 'codeSet',
                 private: true,
@@ -68,7 +68,7 @@
           );
           $routeProvider.when('/codeset/:id/edit',
           {
-              templateUrl: 'views/dashboard/editcodeset.html',
+              templateUrl: '../../../templates/dashboard/editcodeset.html',
               controller: 'EditCodeSetController',
               controllerAs: 'codeSet',
               private: true,
@@ -77,7 +77,7 @@
           );
           $routeProvider.when('/codeset/:id',
             {
-                templateUrl: 'views/dashboard/session.html',
+                templateUrl: '../../../templates/dashboard/session.html',
                 controller: 'TimeController',
                 controllerAs: 'time',
                 private: true,
@@ -86,13 +86,12 @@
           );
           $routeProvider.when('/sessiondata/:id/edit',
             {
-                templateUrl: 'views/dashboard/editsessiondata.html',
+                templateUrl: '../../../templates/dashboard/editsessiondata.html',
                 controller: 'EditSessionDataController',
                 controllerAs: 'edit',
                 private: true,
                 reloadOnSearch: false
             }
           );
-
       })
 }());

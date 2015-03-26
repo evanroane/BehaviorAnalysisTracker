@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In  -->
+<!DOCTYPE svg [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+]>
+<svg version="1.2" baseProfile="tiny"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="252px" height="154px" viewBox="0 0 252 154" overflow="visible" xml:space="preserve">
+<defs>
+</defs>
+<g id="XMLID_2_">
+	<g>
+		<polygon fill="#D8A04D" points="90.2299805,54.4799805 99.25,0.5 108.25,36.75 144.25,36.75 153.25,0.25 162.25,54.25 
+			169.8300781,99.7597656 171.25,108.25 126.25,153.25 81.25,108.25 82.75,99.25 		"/>
+		<polygon fill="#B86F2B" points="252,18.25 216.25,54.25 207.25,90.25 169.8300781,99.7597656 162.25,54.25 189.25,27.25 		"/>
+		<polygon fill="#B86F2B" points="90.2299805,54.4799805 82.75,99.25 45.25,90.25 36.25,54.5 0.25,18.25 63.25,27.75 		"/>
+	</g>
+	<g>
+		<line fill="none" stroke="#231F20" stroke-miterlimit="10" x1="90.2299805" y1="54.4799805" x2="90.25" y2="54.5"/>
+		<path fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" d="M114.1000977,61.2597656
+			C113.8798828,57.5400391,110.6401367,54.25,106.6801758,54.25c-3.9702148,0-7.2001953,3.2900391-7.4301758,7.0097656"/>
+		<path fill="none" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" d="M153.25,61.2597656
+			C153.0200195,57.5400391,149.7900391,54.25,145.8198242,54.25c-3.9599609,0-7.199707,3.2900391-7.4199219,7.0097656"/>
+	</g>
+</g>
+</svg>

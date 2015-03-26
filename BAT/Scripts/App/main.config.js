@@ -5,13 +5,13 @@
       .config(function ($routeProvider) {
           $routeProvider.when('/',
             {
-                templateUrl: 'views/home.html',
+                templateUrl: '../../templates/home.html',
                 reloadOnSearch: false
             }
           );
           $routeProvider.when('/createaccount',
             {
-                templateUrl: 'views/createaccount.html',
+                templateUrl: '../../templates/createaccount.html',
                 controller: 'LoginController',
                 controllerAs: 'new',
                 reloadOnSearch: false
@@ -19,7 +19,7 @@
           );
           $routeProvider.when('/mydashboard',
             {
-                templateUrl: 'views/mydashboard.html',
+                templateUrl: '../../templates/mydashboard.html',
                 reloadOnSearch: false
             }
           );

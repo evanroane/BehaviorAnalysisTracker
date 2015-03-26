@@ -9,16 +9,52 @@
     <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
     <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
     <link rel="shortcut icon" href="/baticon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="~/Content/mobile-angular-ui-hover.css" />
-    <link rel="stylesheet" href="~/Content/mobile-angular-ui-base.css" />
-    <link rel="stylesheet" href="~/Content/mobile-angular-ui-desktop.css" />
+    <link rel="stylesheet" href="~/mobile-angular-ui/css/mobile-angular-ui-hover.css" />
+    <link rel="stylesheet" href="~/mobile-angular-ui/css/mobile-angular-ui-base.css" />
+    <link rel="stylesheet" href="~/mobile-angular-ui/css/mobile-angular-ui-desktop.css" />
     <link rel="stylesheet" href="~/Content/custom.css" />
     <link rel="stylesheet" href="~/Content/session.css" />
+    
+    @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body ng-app="batApp" ng-controller="MainController">
-    <div ng-include="'sidebar.html'" ui-track-as-search-param='true' class="sidebar sidebar-left"></div>
+    <!--ng-include="'~/templates/sidebar.html'"-->
+    <div  ui-track-as-search-param='true' class="sidebar sidebar-left">
+        <div class="scrollable">
+            <h1 class="scrollable-header app-name">
+                <img src="~/img/bat-logo.svg" class="sm-batlogo" alt="BAT Logo" />
+                Bat <small>1.0.1</small>
+            </h1>
+            <div class="scrollable-content">
+                <div class="list-group" ui-turn-off='uiSidebarLeft'>
+                    <a class="list-group-item" href="#/">
+                        <i class="fa fa-home fa-lg"></i> Home <i class="fa fa-chevron-right pull-right"></i>
+                    </a>
+                    <a ng-hide="user" class="list-group-item" href="#/login">
+                        <i class="fa fa-unlock fa-lg"></i> Log In <i class="fa fa-chevron-right pull-right"></i>
+                    </a>
+                    <a ng-hide="user" class="list-group-item" href="#/createaccount">
+                        <i class="fa fa-key fa-lg"></i> Create Account <i class="fa fa-chevron-right pull-right"></i>
+                    </a>
+                    <a ng-show="user" class="list-group-item" href="#/mydashboard">
+                        <i class="fa fa-tachometer fa-lg"></i>
+                        My Dashboard <i class="fa fa-chevron-right pull-right"></i>
+                    </a>
+                    <a ng-show="user" class="list-group-item" href="#/changepassword">
+                        <i class="fa fa-key"></i>
+                        Change Password <i class="fa fa-chevron-right pull-right"></i>
+                    </a>
+                    <a ng-show="user" class="list-group-item" href="#/logout">
+                        <i class="fa fa-lock fa-lg"></i> Log Out <i class="fa fa-chevron-right pull-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
 
+
+    </div>
+    
     <div class="app">
 
         <div class="navbar navbar-app navbar-absolute-top">
@@ -31,15 +67,12 @@
                 </div>
             </div>
         </div>
-
         <div class="app-body" ng-class="{loading: loading}">
             <div ng-show="loading" class="app-content-loading">
                 <i class="fa fa-circle-o-notch fa-spin loading-spinner"></i>
             </div>
             <div class="app-content">
-                <ng-view>
-
-                </ng-view>
+                @RenderBody()
             </div>
         </div>
 
@@ -61,9 +94,6 @@
     <script src="~/Scripts/App/main.config.js"></script>
     <script src="~/Scripts/App/main.constants.js"></script>
     <script src="~/Scripts/App/main.controller.js"></script>
-    <script src="~/Scripts/App/auth/auth.controllers.js"></script>
-    <script src="~/Scripts/App/auth/auth.factory.js"></script>
-    <script src="~/Scripts/App/auth/auth.routes.js"></script>
     <script src="~/Scripts/App/dashboard/dashboard.routes.js"></script>
     <script src="~/Scripts/App/dashboard/datacollector.factory.js"></script>
     <script src="~/Scripts/App/dashboard/datacollector.controller.js"></script>
@@ -77,9 +107,8 @@
 
 
 
-<!--
 
-<body>
+@*<body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -112,5 +141,4 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
-</html>
-    -->
+</html>*@

@@ -1,0 +1,62 @@
+<div ui-content-for="title">
+  <span>Edit Session Data</span>
+</div>
+
+<div class="scrollable">
+  <div class="scrollable-content">
+    <div class="section">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <div class="btn-group pull-right">
+            <a class="btn btn-default" href="/#/previoussessiondata">
+              <i class="fa fa-chevron-left"></i>
+              Back
+            </a>
+          </div>
+          <h3 class="panel-title">Edit: {{edit.sessionData.name}}</h3>
+        </div>
+        <div class="panel-body">
+          <form role="form" name="createCodeSet" ng-submit='' novalidate>
+            <div>
+              <h4>Session Head Data:</h4>
+              <label>
+                Session Label:
+              </label>
+              <input type="text" ng-model="edit.sessionData.name" class="form-control">
+
+              <label>
+                Code Set Used:
+              </label>
+              <input type="text" ng-model="edit.sessionData.codeSetName" class="form-control">
+
+              <label>
+                Description:
+              </label>
+              <input type="text" ng-model="edit.sessionData.description" class="form-control">
+
+
+            </div>
+            <br>
+            <h4>Behavioral Instances and Times:</h4>
+            <div class="form-group has-success has-feedback" data-ng-repeat="instance in edit.sessionData.behaviorInstances">
+
+              <label>
+                {{$index + 1}} - Instance Code Label:
+              </label>
+              <input type="text" ng-model="instance.name" class="form-control">
+              <label>
+                {{$index + 1}} - Instance Time in Seconds:
+              </label>
+              <input type="text" ng-model="instance.time" class="form-control">
+              <hr>
+
+            </div>
+
+            <a class="btn btn-primary btn-block" ng-click="edit.addDataSet()">Save Changes</a>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

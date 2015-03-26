@@ -232,6 +232,7 @@
     <Content Include="Content\mobile-angular-ui-desktop.min.css" />
     <Content Include="Content\mobile-angular-ui-hover.min.css" />
     <Content Include="Content\session.css" />
+    <Content Include="img\bat-logo.svg" />
     <Content Include="mobile-angular-ui\css\mobile-angular-ui-base.css" />
     <Content Include="mobile-angular-ui\css\mobile-angular-ui-base.min.css" />
     <Content Include="mobile-angular-ui\css\mobile-angular-ui-desktop.css" />
@@ -255,9 +256,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\App\auth\auth.factory.js" />
-    <Content Include="Scripts\App\auth\auth.routes.js" />
-    <Content Include="Scripts\App\auth\auth.controllers.js" />
     <Content Include="Scripts\App\Dashboard\analyzedata.controller.js" />
     <Content Include="Scripts\App\Dashboard\codesets.controller.js" />
     <Content Include="Scripts\App\Dashboard\codesets.factory.js" />
@@ -306,6 +304,24 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="templates\changepassword.html" />
+    <Content Include="templates\createaccount.html" />
+    <Content Include="templates\dashboard\download.html" />
+    <Content Include="templates\dashboard\editcodeset.html" />
+    <Content Include="templates\dashboard\editsessiondata.html" />
+    <Content Include="templates\dashboard\graphsessiondata.html" />
+    <Content Include="templates\dashboard\managecodesets.html" />
+    <Content Include="templates\dashboard\newcodeset.html" />
+    <Content Include="templates\dashboard\newsession.html" />
+    <Content Include="templates\dashboard\previoussessiondata.html" />
+    <Content Include="templates\dashboard\rawsessiondata.html" />
+    <Content Include="templates\dashboard\session.html" />
+    <Content Include="templates\dashboard\sessiondatasummary.html" />
+    <Content Include="templates\home.html" />
+    <Content Include="templates\login.html" />
+    <Content Include="templates\logout.html" />
+    <Content Include="templates\mydashboard.html" />
+    <Content Include="templates\sidebar.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -349,7 +365,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="img\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />

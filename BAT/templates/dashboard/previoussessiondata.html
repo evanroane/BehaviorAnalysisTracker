@@ -1,0 +1,100 @@
+<div ui-content-for="title">
+  <span>Previous Sessions</span>
+</div>
+
+<div class="scrollable">
+  <div class="scrollable-content">
+
+    <div class='section'>
+      <div class="pull-left">
+        <h4></h4>
+      </div>
+      <div class="pull-right">
+        <a class="btn btn-default" href="/#/mydashboard">
+          <i class="fa fa-tachometer fa-lg"></i>
+          My Dashboard
+        </a>
+      </div>
+    </div>
+
+
+    <div class="section" ng-repeat="(sessionDataId, sessionData) in dataSets.sessionData">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+
+          <div class="btn-group pull-right" ui-state="activeDropdown">
+            <a ui-set="{activeDropdown: sessionDataId}"
+              ui-scope-context="sessionDataId"
+              class='btn'>
+              <i class="fa fa-chevron-circle-down fa-lg"></i>
+            </a>
+            <ul
+              class="dropdown-menu"
+              ui-outer-click="Ui.turnOff('activeDropdown')"
+              ui-outer-click-if="Ui.eq('activeDropdown', sessionDataId)"
+              ui-scope-context="sessionDataId"
+              ui-show="activeDropdown == sessionDataId"
+              ui-turn-off="activeDropdown">
+            <li>
+              <a class="" href="/#/sessiondatasummary/{{sessionDataId}}">
+                <i class="fa fa-file-o"></i>
+                Summary
+              </a>
+            </li>
+            <li>
+              <a class="" href="/#/rawsessiondata/{{sessionDataId}}">
+                <i class="fa fa-archive"></i>
+                Raw Data
+              </a>
+            </li>
+            <li>
+              <a class="" href="/#/download/{{sessionDataId}}">
+                <i class="fa fa-download"></i>
+                Download CSV
+              </a>
+            </li>
+            <li class="divider"></li>
+            <!--
+            <li>
+              <a class="" href="/#/sessiondata/{{sessionDataId}}/edit">
+                <i class="fa fa-pencil-square-o"></i>
+                Edit Data
+              </a>
+            </li>
+            -->
+            <li>
+              <a ng-click="dataSets.deleteDataSet(sessionDataId)">
+                <i class="fa fa-times-circle"></i>
+                Delete Data
+              </a>
+            </li>
+          </ul>
+        </div>
+          <h3 class="panel-title">
+            <strong>Name:</strong>
+            <i class="fa fa-angle-double-left"></i>
+            {{sessionData.name}}
+            <i class="fa fa-angle-double-right"></i>
+            </h3>
+        </div>
+        <div class="panel-body">
+          <table class="table table-condensed table-responsive">
+          <tr>
+            <th>Description:</th>
+            <td>{{sessionData.description}}</td>
+          </tr>
+          <tr>
+            <th>Code Set:</th>
+            <td>{{sessionData.codeSetName}}</td>
+          </tr>
+          <tr>
+            <th>Date:</th>
+            <td>{{startDate}}</td>
+          </tr>
+        </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div ui-content-for="title">
+	<span>Current Session</span>
+</div>
+
+<div class="scrollable">
+	<div class="scrollable-content">
+
+		<div class="section">
+			<div class="stopwatch bottomline">
+				<div id="time-container">00:00:00</div>
+			</div>
+			Number of Events Recorded: {{dataEventCounter}}
+			<div class="start-stop-btns">
+				<div class="start-left">
+					<a class="btn btn-success btn-block" ng-click="time.startTimer()">Start</a>
+				</div>
+				<div class="stop-right">
+					<a class="btn btn-danger btn-block" ng-click="time.stopTimer()">Stop</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="section">
+				<div class="usr-btns">
+
+					<div class="usr-btn" ng-repeat="(id, button) in time.codeSetData.inputs">
+						<a class="btn btn-block" ng-class="button.color" ng-click="time.dataEvent(button.name, button.id)">{{button.name}}</a>
+					</div>
+
+				</div>
+		</div>
+
+		<div class="section">
+			<div class="records"></div>
+		</div>
+
+		<div class="section">
+			<label>Session Name:</label>
+			<input type="text" class="form-control" ng-model="sessionLabel">
+		</div>
+
+		<div class="section">
+			<label>Session Description:</label>
+			<input type="text" class="form-control" ng-model="sessionDesc">
+		</div>
+
+		<div class="section">
+			<a class="btn btn-block btn-danger" ng-click="time.saveSession(time.codeSetData.codeSetId, time.codeSetData.description)">Save Session</a>
+		</div>
+	</div>
+</div>

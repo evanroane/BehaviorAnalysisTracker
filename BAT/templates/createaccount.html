@@ -1,0 +1,51 @@
+<div ui-content-for="title">
+  <span>Create Account</span>
+</div>
+
+<div class="scrollable">
+  <div class="scrollable-content section">
+
+    <form role="form" name="createAccount" ng-submit='createAccount()' novalidate>
+      <fieldset>
+        <legend>Create Account</legend>
+        <div class="form-group has-success has-feedback">
+        <!--
+          <label>First Name:</label>
+          <input type="text"
+          ng-model="firstName"
+          class="form-control"
+          placeholder="Enter first name">
+
+          <label>Last Name:</label>
+          <input type="text"
+          ng-model="lastName"
+          class="form-control"
+          placeholder="Enter last name">
+
+          <label>Occupation: <small>(e.g. Clinical Psychologist, Behavior Analyst, Social Worker, etc.)</small></label>
+          <input type="text"
+          ng-model="occupation"
+          class="form-control"
+          placeholder="Enter last name">
+-->
+          <label>Email Address: <small>(Note: Your email address will be used with your password to log in.)</small></label>
+          <input type="email"
+          ng-model="new.email"
+          class="form-control"
+          placeholder="Enter email">
+        </div>
+
+        <div class="form-group">
+          <label>Password: <small>xkcd</small></label>
+          <input type="password"
+          ng-model="new.password"
+          class="form-control"
+          placeholder="Password">
+        </div>
+      </fieldset>
+      <hr>
+      <a class="btn btn-primary btn-block" ng-class="{disabled: createAccount.$invalid}" ng-click="new.createAccount()">Register</a>
+
+    </form>
+  </div>
+</div>

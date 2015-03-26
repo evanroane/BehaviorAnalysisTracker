@@ -1,0 +1,74 @@
+<div ui-content-for="title">
+  <span>Manage Code Sets</span>
+</div>
+
+<div class="scrollable">
+  <div class="scrollable-content section">
+
+    <div class='section'>
+      <div class="pull-left">
+        <h4></h4>
+      </div>
+      <div class="pull-right">
+        <a class="btn btn-default" href="/#/mydashboard">
+          <i class="fa fa-tachometer fa-lg"></i>
+          My Dashboard
+        </a>
+      </div>
+    </div>
+    
+
+    <div class="section">
+      <a class="btn btn-lg btn-primary btn-block" href="#/newcodeset">
+        <i class="fa fa-plus-square-o fa-lg"></i>
+        New Code Set
+      </a>
+    </div>
+    <div class="section" ng-repeat="(codeSetId, codeSet) in viewCodeSet.codeSet">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+
+          <div class="btn-group pull-right" ui-state="activeDropdown">
+            <a ui-set="{activeDropdown: codeSetId}"
+            ui-scope-context="codeSetId"
+            class='btn'>
+            <i class="fa fa-chevron-circle-down fa-lg"></i>
+          </a>
+          <ul
+            class="dropdown-menu"
+            ui-outer-click="Ui.turnOff('activeDropdown')"
+            ui-outer-click-if="Ui.eq('activeDropdown', codeSetId)"
+            ui-scope-context="codeSetId"
+            ui-show="activeDropdown == codeSetId"
+            ui-turn-off="activeDropdown">
+            <li>
+              <a class="" href="/#/codeset/{{codeSetId}}/edit">
+                <i class="fa fa-pencil-square-o"></i>
+                Edit
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+              <a class="" ng-click="viewCodeSet.removeCodeSet(codeSetId)">
+                <i class="fa fa-times-circle"></i>
+                Delete
+              </a>
+            </li>
+          </ul>
+        </div>
+          <h3 class="panel-title">{{codeSet.codeSetId}}</h3>
+        </div>
+        <div class="panel-body">
+          {{codeSet.description}}
+        </div>
+      </div>
+    </div>
+
+
+    <div ui-state="activeDropdown"></div>
+
+  </div>
+
+
+  </div>
+</div>
