@@ -79,6 +79,7 @@ namespace BAT.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    string userID = User.Identity.GetUserId<string>();
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");

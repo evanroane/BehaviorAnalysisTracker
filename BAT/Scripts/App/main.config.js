@@ -6,14 +6,26 @@
           $routeProvider.when('/',
             {
                 templateUrl: '../../templates/home.html',
+                controller: 'MainController',
                 reloadOnSearch: false
             }
           );
-          $routeProvider.when('/createaccount',
+          
+          $routeProvider.when('/login',
             {
-                templateUrl: '../../templates/createaccount.html',
-                controller: 'LoginController',
-                controllerAs: 'new',
+                templateUrl: '/Account/Login',
+                controller: 'MainController',
+                //controllerAs: 'new',
+                reloadOnSearch: false
+            }
+          );
+
+
+          $routeProvider.when('/register',
+            {
+                templateUrl: '/Account/Register',
+                controller: 'MainController',
+                //controllerAs: 'new',
                 reloadOnSearch: false
             }
           );
