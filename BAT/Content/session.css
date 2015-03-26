@@ -1,0 +1,54 @@
+.stopwatch {
+  padding-bottom: 0.125em;
+}
+
+#time-container {
+  font-size: 2em;
+  height: 1.1em;
+  width: 4em;
+  margin-left: auto;
+  margin-right: auto;
+  border-color: #cccccc;
+  border-style: solid;
+  border-width: 1px;
+  border-top-right-radius: 4px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  line-height: 1em;
+}
+
+.inputs {
+  margin-top: 0.125em;
+}
+
+.start-stop-btns {
+  padding-top: 0.125em;
+  border-bottom: 1px solid #000000;
+  height: 3em;
+}
+
+.start-left {
+  width: 49.5%;
+  float: left;
+}
+
+.stop-right {
+  width: 49.5%;
+  float: right;
+}
+
+.usr-btns {
+  padding-top: 1em;
+  clear: both;
+}
+
+.usr-btns > a {
+  margin-top: 4px;
+}
+
+.usr-btn {
+  padding-bottom: 0.5em;
+}
+
+.records {}
