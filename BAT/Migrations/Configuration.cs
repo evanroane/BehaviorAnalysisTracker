@@ -34,29 +34,286 @@ namespace BAT.Migrations
         protected override void Seed(BAT.Models.BATDbContext context)
         {
             {
-                //ApplicationDbContext userContext = new ApplicationDbContext();
-                //AddUsers(userContext);    
-                
-                //context.CodeSets.AddOrUpdate<CodeSet>(i => i.CodeSetID,
-                //    new CodeSet
-                //    { 
-                //        CodeSetOwner = ""
-                //    }
+                String jessieID = "4926b247-d2b2-4bc0-8123-b436a563a9b6";
+                String evanId = "a8fb4721-5bfc-4b1b-8215-80bfa40b15ed";
 
-                //);
- 
-                //context.Inputs.AddOrUpdate<Input>(i => i.InputID,
-                //new Input
-                //    {
-                //        InputName = "aggression",
-                //        InputType = "event",
-                //        InputColor = "btn-default"
-                //    }
-                //);
-                //context.CodeSetPermissions;
-                //context.Sessions;
-                //context.SessionPermissions;
-                //context.BehaviorEvents;
+                ApplicationDbContext userContext = new ApplicationDbContext();
+                AddUsers(userContext);
+
+                context.CodeSets.AddOrUpdate<CodeSet>(i => i.CodeSetName,
+                    new CodeSet
+                    {
+                        CodeSetID = 1,
+                        CodeSetOwner = jessieID,
+                        CodeSetName = "Classroom Behavior",
+                        CodeSetDescription = "Designed to observe a targeted student's behavior during classroom instruction"
+                    }
+                );
+
+                int codeSetID = 6;
+                context.Inputs.AddOrUpdate<Input>(i => i.InputName,
+                new Input
+                    {
+                        CodeSetID = codeSetID,
+                        InputName = "Praise",
+                        InputType = "event",
+                        InputColor = "btn-default"
+                    },
+                
+                 new Input
+                    {
+                        CodeSetID = codeSetID,
+                        InputName = "Reprimand",
+                        InputType = "event",
+                        InputColor = "btn-default"
+                    },
+
+                    new Input
+                    {
+                        CodeSetID = codeSetID,
+                        InputName = "OTR",
+                        InputType = "event",
+                        InputColor = "btn-default"
+                    },
+                    
+                    new Input
+                    {
+                        CodeSetID = codeSetID,
+                        InputName = "Response",
+                        InputType = "event",
+                        InputColor = "btn-default"
+                    },
+
+                    new Input
+                    {
+                        CodeSetID = codeSetID,
+                        InputName = "Nonresponse",
+                        InputType = "event",
+                        InputColor = "btn-default"
+                    },
+
+                    new Input
+                    {
+                        CodeSetID = codeSetID,
+                        InputName = "Verbal_disruptive",
+                        InputType = "event",
+                        InputColor = "btn-default"
+                    },
+
+                    new Input
+                    {
+                        CodeSetID = codeSetID,
+                        InputName = "Phys_disruptive",
+                        InputType = "event",
+                        InputColor = "btn-default"
+                    }
+                 );
+
+                context.CodeSetPermissions.AddOrUpdate<CodeSetPermission>(i => i.CodeSetPermissionID,
+                    new CodeSetPermission
+                    {
+                        OwnerID = jessieID,
+                        ParticipantID = evanId,
+                        CodeSetID = codeSetID
+                    }
+                );
+
+                context.Sessions.AddOrUpdate<Session>(i => i.SessionName,
+                    new Session
+                    {
+                        OwnerID = jessieID,
+                        CodeSet = codeSetID,
+                        SessionName = "8675309",
+                        SessionDescription = "At location C"
+                    }
+                );
+
+                context.SessionPermissions.AddOrUpdate<SessionPermission>(i => i.OwnerID,
+                    new SessionPermission
+                    {
+                        OwnerID = jessieID,
+                        ParticipantID = evanId,
+                        SessionID = 1
+                    }
+                );
+
+                context.BehaviorEvents.AddOrUpdate<BehaviorEvent>(i => i.Seconds,
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 35,
+                        Seconds = 40
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 34,
+                        Seconds = 40
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 33,
+                        Seconds = 40
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 32,
+                        Seconds = 41
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 31,
+                        Seconds = 41
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 30,
+                        Seconds = 41
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 29,
+                        Seconds = 42
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 30,
+                        Seconds = 42
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 32,
+                        Seconds = 42
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 34,
+                        Seconds = 43
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 35,
+                        Seconds = 43
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 33,
+                        Seconds = 44
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 32,
+                        Seconds = 44
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 30,
+                        Seconds = 44
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 31,
+                        Seconds = 45
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 33,
+                        Seconds = 45
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 34,
+                        Seconds = 45
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 31,
+                        Seconds = 46
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 30,
+                        Seconds = 46
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 32,
+                        Seconds = 46
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 35,
+                        Seconds = 47
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 32,
+                        Seconds = 48
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 33,
+                        Seconds = 48
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 30,
+                        Seconds = 49
+                    },
+                    new BehaviorEvent
+                    {
+                        ObserverID = jessieID,
+                        SessionID = 3,
+                        InputID = 29,
+                        Seconds = 49
+                    }
+                );
 
 
             }
