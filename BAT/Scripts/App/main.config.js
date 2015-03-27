@@ -15,11 +15,17 @@
             {
                 templateUrl: '/Account/Login',
                 controller: 'MainController',
-                //controllerAs: 'new',
                 reloadOnSearch: false
             }
           );
 
+          $routeProvider.when('/logout',
+            {
+                templateUrl: '../../templates/logout.html',
+                controller: 'MainController',
+                reloadOnSearch: false
+            }
+          );
 
           $routeProvider.when('/register',
             {

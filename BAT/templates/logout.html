@@ -7,9 +7,10 @@
     <h3 class="media-heading text-center">
       Are you sure you want to Log Out?
     </h3>
+    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
     <a class="btn btn-danger btn-block" ng-click="logout.logout()">
       Yes, Log Me Out
     </a>
-    <h4 ng-hide="user" class="text-center">You are now logged out of B.A.T.</h4>
+    <h4 ng-hide="isLoggedIn" class="text-center">You are now logged out of B.A.T.</h4>
   </div>
 </div>

@@ -14,11 +14,11 @@
           $http.get("api/userid")
             .then(function (result) {
                 //success
-                if (result !== null) {
+                if (result.data !== null) {
                     $rootScope.isLoggedIn = true;
                     $rootScope.userID = result.data;
                     console.log($rootScope.userID);
-                } else {
+                } else if (result.data === null) {
                     $rootScope.isLoggedIn = false;
                 }
                 

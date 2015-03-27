@@ -10,26 +10,22 @@ using Microsoft.AspNet.Identity;
 
 namespace BAT.Controllers
 {
-    public class CodeSetController : ApiController
+    public class InputsController : ApiController
     {
         private static BATRepository _db = new BATRepository();
-        
+
         [HttpGet]
-        [Route("api/codeset/{userID}")]
-        public System.Web.Mvc.JsonResult GetCodeSets(string userID)
+        [Route("api/inputs/{codeSetID}")]
+        public System.Web.Mvc.JsonResult GetInputs(int codeSetID)
         {
-            var codeSets = _db.GetCodeSetByUserID(userID);
+            var inputs = _db.GetInputsByCodeSetID(codeSetID);
             var json = new System.Web.Mvc.JsonResult();
             json.Data = new
             {
-                codeSets
+                inputs
             };
             return json;
         }
-
-
-
-
 
     }
 }

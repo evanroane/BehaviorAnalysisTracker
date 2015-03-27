@@ -14,8 +14,6 @@
     <link rel="stylesheet" href="~/mobile-angular-ui/css/mobile-angular-ui-desktop.css" />
     <link rel="stylesheet" href="~/Content/custom.css" />
     <link rel="stylesheet" href="~/Content/session.css" />
-    
-    @*@Styles.Render("~/Content/css")*@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body ng-app="batApp" ng-controller="MainController">
@@ -34,7 +32,7 @@
                     <a ng-hide="user" class="list-group-item" href="#/login">
                         <i class="fa fa-unlock fa-lg"></i> Log In <i class="fa fa-chevron-right pull-right"></i>
                     </a>
-                    <a ng-hide="user" class="list-group-item" href="#/createaccount">
+                    <a ng-hide="user" class="list-group-item" href="#/register">
                         <i class="fa fa-key fa-lg"></i> Create Account <i class="fa fa-chevron-right pull-right"></i>
                     </a>
                     <a ng-show="user" class="list-group-item" href="#/mydashboard">
@@ -77,6 +75,8 @@
         </div>
 
     </div>
+    @Html.Partial("_LoginPartial")
+
 
     <div ui-yield-to="modals"></div>
 

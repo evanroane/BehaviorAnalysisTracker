@@ -10,26 +10,22 @@ using Microsoft.AspNet.Identity;
 
 namespace BAT.Controllers
 {
-    public class CodeSetController : ApiController
+    public class SessionController : ApiController
     {
         private static BATRepository _db = new BATRepository();
-        
+
         [HttpGet]
-        [Route("api/codeset/{userID}")]
-        public System.Web.Mvc.JsonResult GetCodeSets(string userID)
+        [Route("api/session/{userID}")]
+        public System.Web.Mvc.JsonResult GetSessions(string userID)
         {
-            var codeSets = _db.GetCodeSetByUserID(userID);
+            var sessions = _db.AllSessions(userID);
             var json = new System.Web.Mvc.JsonResult();
             json.Data = new
             {
-                codeSets
+                sessions
             };
             return json;
         }
-
-
-
-
 
     }
 }

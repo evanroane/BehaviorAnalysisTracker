@@ -3,6 +3,15 @@
 
     angular.module('batApp')
       .config(function ($routeProvider) {
+          $routeProvider.when('/newcodeset',
+            {
+                templateUrl: '../../../templates/dashboard/newcodeset.html',
+                controller: 'CodeSetController',
+                controllerAs: 'codeSet',
+                private: true,
+                reloadOnSearch: false
+            }
+          );
           $routeProvider.when('/newsession',
             {
                 templateUrl: '../../../templates/dashboard/newsession.html',
@@ -57,15 +66,7 @@
                 reloadOnSearch: false
             }
           );
-          $routeProvider.when('/newcodeset',
-            {
-                templateUrl: '../../../templates/dashboard/newcodeset.html',
-                controller: 'CodeSetController',
-                controllerAs: 'codeSet',
-                private: true,
-                reloadOnSearch: false
-            }
-          );
+          
           $routeProvider.when('/codeset/:id/edit',
           {
               templateUrl: '../../../templates/dashboard/editcodeset.html',

@@ -60,9 +60,10 @@ namespace BAT.Repository
         }
         
         //Session: Read
-        public List<Session> AllSessions()
+        public List<Session> AllSessions(string userID)
         {
             var query = from Session in _dbContext.Sessions
+                        where Session.OwnerID == userID
                         select Session;
             return query.ToList<Session>();
         }
@@ -82,14 +83,6 @@ namespace BAT.Repository
                         where Session.SessionID == id
                         select Session;
             return query.First<Session>();
-        }
-
-        public List<Session> AllSessions(string UserID)
-        {
-            var query = from Session in _dbContext.Sessions
-                        where Session.OwnerID == UserID
-                        select Session;
-            return query.ToList<Session>();
         }
 
         //Session: Update
@@ -263,12 +256,12 @@ namespace BAT.Repository
             return query.First<CodeSet>();
         }
 
-        public IEnumerable<CodeSet> GetCodeSetByUserID(string UserID)
+        public List<CodeSet> GetCodeSetByUserID(string UserID)
         {
             var query = from CodeSet in _dbContext.CodeSets
                         where CodeSet.CodeSetOwner == UserID
                         select CodeSet;
-            return query.ToList();
+            return query.ToList<CodeSet>();
         }
 
         //CodeSet: Update

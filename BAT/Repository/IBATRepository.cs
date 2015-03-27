@@ -13,7 +13,7 @@ namespace BAT.Repository
         //Session: Read
         int GetSessionID(string sessionName);
         Session ReadSession(int id);
-        List<Session> AllSessions(string UserID);
+        List<Session> AllSessions(string userID);
         //Session: Update
         void ModifySessionName(Session s, string sessionName);
         //Session: Delete
