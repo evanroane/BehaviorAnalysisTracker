@@ -29,13 +29,19 @@ namespace BAT.Controllers
         
         [HttpPost]
         [Route("api/behaviorevent/{userID}")]
-        public HttpResponseMessage CreateEvents(string userID, [FromBody] List<BehaviorEvent> BEList)
+        public List<BehaviorEvent> PostBehaviorEvents(JObject inputSet)
         {
-            BEList.ForEach(delegate(BehaviorEvent BE)
+            List<BehaviorEvent> convertedEvents = new List<BehaviorEvent>();
+            dynamic req = inputSet;
+            foreach (dynamic input in (JArray)req.inputs)
+            {
+                convertedEvents.Add(input);
+            }
+            foreach (BehaviorEvent BE in convertedEvents)
             {
                 _db.CreateBehaviorEvent(BE);
-            });
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            return convertedEvents;
         }
 
     }

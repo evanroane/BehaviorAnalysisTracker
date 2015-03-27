@@ -21,7 +21,7 @@ namespace BAT.Repository
         void DeleteSession(Session s);
 
         //Input: Create
-        void CreateInput(string name, string inputType, string inputColor);
+        void CreateInput(Input I);
         //Input: Read
         List<Input> GetInputsByCodeSetID(int id);
         //Input: Update

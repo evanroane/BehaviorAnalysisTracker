@@ -30,17 +30,17 @@ namespace BAT.Controllers
         }
         [HttpPost]
         [Route("api/input/{userID}")]
-        public List<BehaviorEvent> PostBehaviorEvents(JObject inputSet)
+        public List<Input> PostInputs(JObject inputSet)
         {
-            List<BehaviorEvent> convertedEvents = new List<BehaviorEvent>();
+            List<Input> convertedEvents = new List<Input>();
             dynamic req = inputSet;
             foreach (dynamic input in (JArray)req.inputs)
             {
                 convertedEvents.Add(input);
             }
-            foreach (BehaviorEvent BE in convertedEvents)
+            foreach (Input I in convertedEvents)
             {
-                _db.CreateBehaviorEvent(BE);
+                _db.CreateInput(I);
             }
             return convertedEvents;
         }

@@ -103,12 +103,10 @@ namespace BAT.Repository
         }
 
         //Input: Create
-        public void CreateInput(string name, string inputType, string inputColor)
+        public void CreateInput(Input I)
         {
-            Input I = new Input();
-            I.InputName = name;
-            I.InputType = inputType;
-            I.InputColor = inputColor;
+            _dbContext.Inputs.Add(I);
+            _dbContext.SaveChanges();
         }
 
         //Input: Read
