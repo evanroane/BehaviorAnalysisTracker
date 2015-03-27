@@ -27,5 +27,13 @@ namespace BAT.Controllers
             return json;
         }
 
+        [HttpPost]
+        [Route("api/session/{userID}")]
+        public HttpResponseMessage Session(string userID, [FromBody] Session S)
+        {
+            _db.CreateSession(S);
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
     }
 }

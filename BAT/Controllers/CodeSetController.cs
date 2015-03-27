@@ -26,10 +26,12 @@ namespace BAT.Controllers
             };
             return json;
         }
-
-
-
-
-
+        [HttpPost]
+        [Route("api/codeset/{userID}")]
+        public HttpResponseMessage CodeSet(string userID, [FromBody] CodeSet CS)
+        {
+            _db.CreateCodeSet(CS);
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
     }
 }
