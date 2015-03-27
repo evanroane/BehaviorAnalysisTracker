@@ -2,7 +2,7 @@
   <div class="scrollable-content">
     <div class="list-group text-center">
       <div class="list-group-item list-group-item-home">
-        <h1>B.A.T. <small>1.0.1</small>
+        <h1>B.A.T. <small>2.0</small>
         </h1>
       </div>
       <div class="list-group-item list-group-item-home media">
@@ -16,18 +16,18 @@
       </div>
       <div class="list-group-item list-group-item-home media">
         <div class="section">
-          <a ng-hide="user" class="btn btn-primary" href="#/createaccount">
-            <i class="fa fa-key fa-lg"></i> Create Account
-          </a>
-          <a ng-show="user" class="btn btn-primary" href="#/mydashboard">
-            <i class="fa fa-tachometer fa-lg"></i> My Dashboard
-          </a>
+            <a ng-hide="isLoggedIn" class="btn btn-primary" href="#/createaccount">
+                <i class="fa fa-key fa-lg"></i> Create Account
+            </a>
+            <a ng-show="isLoggedIn" class="btn btn-primary" href="#/mydashboard">
+                <i class="fa fa-tachometer fa-lg"></i> My Dashboard
+            </a>
         </div>
-        <div ng-hide="user" class="section">
-          <a class='btn btn-primary' href="#/login">
-            <i class="fa fa-unlock fa-lg"></i> Login
-          </a>
-        </div>
+          <div ng-hide="isLoggedIn" class="section">
+              <a class='btn btn-primary' href="#/login">
+                  <i class="fa fa-unlock fa-lg"></i> Login
+              </a>
+          </div>
       </div>
     </div>
   </div>
