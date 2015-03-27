@@ -25,13 +25,11 @@ namespace BAT.Repository
         {
             var codeSets = this.AllCodeSets();
             var inputs = this.AllInputs();
-            var sessions = this.AllSessions();
             var behaviorEvents = this.AllBehaviorEvents();
             var codeSetPermissions = this.GetAllPermissions();
             var sessionPermissions = this.AllSessionPermissions();
             _dbContext.CodeSets.RemoveRange(codeSets);
             _dbContext.Inputs.RemoveRange(inputs);
-            _dbContext.Sessions.RemoveRange(sessions);
             _dbContext.BehaviorEvents.RemoveRange(behaviorEvents);
             _dbContext.CodeSetPermissions.RemoveRange(codeSetPermissions);
             _dbContext.SaveChanges();
