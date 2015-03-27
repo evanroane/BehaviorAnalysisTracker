@@ -27,6 +27,20 @@ namespace BAT.Controllers
             return json;
         }
 
+        [HttpGet]
+        [Route("api/codeset/id/{codeSetID}")]
+        public System.Web.Mvc.JsonResult GetBehaviorEventsBySessionID(int ID)
+        {
+            var inputs = _db.GetInputsByCodeSetID(codeSetID);
+            var json = new System.Web.Mvc.JsonResult();
+            json.Data = new
+            {
+                inputs
+            };
+            return json;
+        }
+
+
         [HttpPost]
         [Route("api/session/{userID}")]
         public HttpResponseMessage Session(string userID, [FromBody] Session S)

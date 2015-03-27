@@ -18,9 +18,9 @@
         $scope.sessionLabel = "";
         $scope.sessionDesc = "";
 
-        codeSetFactory.getCodeSet(id, function (data) {
-            vm.codeSetData = data;
-            $scope.inputs = vm.codeSetData.inputs
+        codeSetFactory.getCodeSet($routeParams.id, function (data) {
+            $scope.inputs = data.data.inputs;
+            //$scope.inputs = vm.codeSetData.inputs
         });
 
         vm.displayTimer = function () {

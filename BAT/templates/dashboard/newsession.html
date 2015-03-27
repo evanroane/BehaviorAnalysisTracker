@@ -20,19 +20,19 @@
     </div>
 
     <div class='section'>
-      <div ng-repeat="(codeSetId, codeSet) in viewCodeSet.codeSet">
+      <div ng-repeat="(codeSetId, codeSet) in codeSets">
         <div class="panel panel-default">
           <div class="panel-heading">
             <div class="btn-group pull-right">
-              <a class="btn btn-default btn-sm" href="/#/codeset/{{codeSetId}}">
+              <a class="btn btn-default btn-sm" href="/#/codeset/{{codeSet.codeSetID}}">
                 Begin
                   <i class="fa fa-play"></i>
               </a>
           </div>
-          <h3 class="panel-title">{{codeSet.codeSetId}}</h3>
+          <h3 class="panel-title">{{codeSet.codeSetName}}</h3>
         </div>
         <div class="panel-body">
-          {{codeSet.description}}
+          {{codeSet.codeSetDescription}}
         </div>
       </div>
     </div>

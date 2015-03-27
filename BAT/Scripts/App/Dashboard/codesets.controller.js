@@ -19,7 +19,6 @@
         };
 
         $scope.addNewInput = function () {
-            //var newInputNum = $scope.codeSetData.inputs.length + 1;
             $scope.codeSetData.inputs.push(
               {
                   "name": "",
@@ -45,12 +44,12 @@
         };
     })
 
-    .controller('ShowCodeSetController', function ($scope, $routeParams, codeSetFactory) {
+    .controller('ShowCodeSetController', function ($rootScope, $scope, $routeParams, codeSetFactory) {
         var vm = this;
         var id = $routeParams.id;
 
         codeSetFactory.getAllCodeSets(function (data) {
-            vm.codeSet = data;
+            $scope.codeSets = data;
         });
 
         vm.removeCodeSet = function (codeSetId) {

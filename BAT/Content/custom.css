@@ -157,6 +157,11 @@ input.scrollable-header {
   border-bottom: 3px solid #ccc;
 }
 
+.batbox {
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .batlogo {
   max-width: 50%;
 }

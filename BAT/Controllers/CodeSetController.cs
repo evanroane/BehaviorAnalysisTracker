@@ -26,6 +26,20 @@ namespace BAT.Controllers
             };
             return json;
         }
+
+        [HttpGet]
+        [Route("api/codeset/id/{codeSetID}")]
+        public System.Web.Mvc.JsonResult GetInputsSetByCodeSetID(int codeSetID)
+        {
+            var inputs = _db.GetInputsByCodeSetID(codeSetID);
+            var json = new System.Web.Mvc.JsonResult();
+            json.Data = new
+            {
+                inputs
+            };
+            return json;
+        }
+
         [HttpPost]
         [Route("api/codeset/{userID}")]
         public HttpResponseMessage CodeSet(string userID, [FromBody] CodeSet CS)

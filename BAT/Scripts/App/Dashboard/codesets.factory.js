@@ -2,17 +2,7 @@
     'use strict';
 
     angular.module('batApp')
-    .factory('codeSetFactory', function ($rootScope, FIREBASE_URL, $http, $location) {
-
-        function _batUrl(id) {
-            if (id) {
-                return FIREBASE_URL + 'users/' + $rootScope.user.uid +
-                '/codeSets/' + id + '.json?auth=' + $rootScope.user.token;
-            } else {
-                return FIREBASE_URL + 'users/' + $rootScope.user.uid +
-                '/codeSets.json?auth=' + $rootScope.user.token;
-            }
-        }
+    .factory('codeSetFactory', function ($rootScope, $http, $location) {
 
         function createCodeSet(codeSet, cb) {
             $http.post(_batUrl(), codeSet)
@@ -26,7 +16,7 @@
         }
 
         function getCodeSet(id, cb) {
-            $http.get(_batUrl(id))
+            $http.get("api/codeset/id/" + id)
             .success(function (data) {
                 cb(data);
             })
@@ -36,9 +26,9 @@
         }
 
         function getAllCodeSets(cb) {
-            $http.get(_batUrl())
+            $http.get("api/codeset/" + $rootScope.userID)
             .success(function (data) {
-                cb(data);
+                cb(data.data.codeSets);
             })
             .error(function (err) {
                 console.log(err);

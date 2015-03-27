@@ -23,8 +23,8 @@
 		<div class="section">
 				<div class="usr-btns">
 
-					<div class="usr-btn" ng-repeat="(id, button) in time.codeSetData.inputs">
-						<a class="btn btn-block" ng-class="button.color" ng-click="time.dataEvent(button.name, button.id)">{{button.name}}</a>
+					<div class="usr-btn" ng-repeat="input in inputs">
+						<a class="btn btn-block btn-primary" ng-click="time.dataEvent(input.inputName, input.inputID)">{{input.inputName}}</a>
 					</div>
 
 				</div>
