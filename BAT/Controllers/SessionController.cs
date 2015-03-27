@@ -29,13 +29,13 @@ namespace BAT.Controllers
 
         [HttpGet]
         [Route("api/codeset/id/{codeSetID}")]
-        public System.Web.Mvc.JsonResult GetBehaviorEventsBySessionID(int ID)
+        public System.Web.Mvc.JsonResult GetBehaviorEventsBySessionID(int sessionID)
         {
-            var inputs = _db.GetInputsByCodeSetID(codeSetID);
+            var behaviorEvents = _db.GetEventsBySessionID(sessionID);
             var json = new System.Web.Mvc.JsonResult();
             json.Data = new
             {
-                inputs
+                behaviorEvents
             };
             return json;
         }
