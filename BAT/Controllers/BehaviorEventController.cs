@@ -7,6 +7,8 @@ using System.Web.Http;
 using BAT.Models;
 using BAT.Repository;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json.Linq;
+using System.Dynamic;
 
 namespace BAT.Controllers
 {
