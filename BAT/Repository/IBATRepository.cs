@@ -30,7 +30,7 @@ namespace BAT.Repository
         void DeleteInput(Input I);
 
         //BehaviorEvent: Create
-        void CreateBehaviorEvent(int sessionID, string observerID, int seconds);
+        void CreateBehaviorEvent(BehaviorEvent BE);
         //BehaviorEvent: Read
         List<BehaviorEvent> GetEventsBySessionID(int id);
         //BehaviorEvent: Update

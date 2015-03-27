@@ -144,12 +144,10 @@ namespace BAT.Repository
         }
 
         //BehaviorEvent: Create
-        public void CreateBehaviorEvent(int sessionID, string observerID, int seconds)
+        public void CreateBehaviorEvent(BehaviorEvent BE)
         {
-            BehaviorEvent BE = new BehaviorEvent();
-            BE.SessionID = sessionID;
-            BE.ObserverID = observerID;
-            BE.Seconds = seconds;
+            _dbContext.BehaviorEvents.Add(BE);
+            _dbContext.SaveChanges();
         }
 
         //BehaviorEvent: Read

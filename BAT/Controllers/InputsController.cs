@@ -7,6 +7,8 @@ using System.Web.Http;
 using BAT.Models;
 using BAT.Repository;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json.Linq;
+using System.Dynamic;
 
 namespace BAT.Controllers
 {
@@ -15,7 +17,7 @@ namespace BAT.Controllers
         private static BATRepository _db = new BATRepository();
 
         [HttpGet]
-        [Route("api/inputs/{codeSetID}")]
+        [Route("api/input/{codeSetID}")]
         public System.Web.Mvc.JsonResult GetInputs(int codeSetID)
         {
             var inputs = _db.GetInputsByCodeSetID(codeSetID);
@@ -26,6 +28,21 @@ namespace BAT.Controllers
             };
             return json;
         }
-
+        [HttpPost]
+        [Route("api/input/{userID}")]
+        public List<BehaviorEvent> PostBehaviorEvents(JObject inputSet)
+        {
+            List<BehaviorEvent> convertedEvents = new List<BehaviorEvent>();
+            dynamic req = inputSet;
+            foreach (dynamic input in (JArray)req.inputs)
+            {
+                convertedEvents.Add(input);
+            }
+            foreach (BehaviorEvent BE in convertedEvents)
+            {
+                _db.CreateBehaviorEvent(BE);
+            }
+            return convertedEvents;
+        }
     }
 }

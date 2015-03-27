@@ -16,7 +16,7 @@ namespace BAT.Controllers
 
         [HttpGet]
         [Route("api/behaviorevent/{sessionID}")]
-        public System.Web.Mvc.JsonResult GetSessions(int sessionID)
+        public System.Web.Mvc.JsonResult GetBehaviorEvent(int sessionID)
         {
             var behaviorEvents = _db.GetEventsBySessionID(sessionID);
             var json = new System.Web.Mvc.JsonResult();
@@ -26,5 +26,17 @@ namespace BAT.Controllers
             };
             return json;
         }
+        
+        [HttpPost]
+        [Route("api/behaviorevent/{userID}")]
+        public HttpResponseMessage CreateEvents(string userID, [FromBody] List<BehaviorEvent> BEList)
+        {
+            BEList.ForEach(delegate(BehaviorEvent BE)
+            {
+                _db.CreateBehaviorEvent(BE);
+            });
+            return new HttpResponseMessage(HttpStatusCode.OK);
+        }
+
     }
 }
