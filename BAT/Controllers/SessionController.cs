@@ -28,7 +28,7 @@ namespace BAT.Controllers
         }
 
         [HttpGet]
-        [Route("api/codeset/id/{codeSetID}")]
+        [Route("api/events/id/{sessionID}")]
         public System.Web.Mvc.JsonResult GetBehaviorEventsBySessionID(int sessionID)
         {
             var behaviorEvents = _db.GetEventsBySessionID(sessionID);
