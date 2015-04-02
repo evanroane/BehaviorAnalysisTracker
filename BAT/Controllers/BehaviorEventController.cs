@@ -17,8 +17,8 @@ namespace BAT.Controllers
         private static BATRepository _db = new BATRepository();
 
         [HttpGet]
-        [Route("api/behaviorevent/{sessionID}")]
-        public System.Web.Mvc.JsonResult GetBehaviorEvent(int sessionID)
+        [Route("api/events/id/{sessionID}")]
+        public System.Web.Mvc.JsonResult GetBehaviorEventsBySessionID(int sessionID)
         {
             var behaviorEvents = _db.GetEventsBySessionID(sessionID);
             var json = new System.Web.Mvc.JsonResult();
