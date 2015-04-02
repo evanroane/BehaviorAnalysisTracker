@@ -28,6 +28,7 @@ namespace BAT.Controllers
             };
             return json;
         }
+        
         [HttpPost]
         [Route("api/input/{userID}")]
         public List<Input> PostInputs(JObject inputSet)
