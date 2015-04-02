@@ -43,7 +43,7 @@ namespace BAT.Repository
         void GrantPermission(string ownerID, string participantID, int codeSetID);
         //CodeSetPermissions: Read
         List<CodeSetPermission> GetAllPermissions();
-        List<CodeSetPermission> GetUserPermissions(string userID);
+        List<CodeSetPermission> GetParticipatingCodeSets(string userID);
         //CodeSetPermissions: Delete
         void RemoveCodeSetPermission(CodeSetPermission CSP);
 

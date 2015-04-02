@@ -203,8 +203,7 @@ namespace BAT.Repository
             return query.ToList<CodeSetPermission>();
         }
 
-        
-        public List<CodeSetPermission> GetUserPermissions(string userID)
+        public List<CodeSetPermission> GetParticipatingCodeSets(string userID)
         {
             var query = from CodeSetPermission in _dbContext.CodeSetPermissions
                         where CodeSetPermission.ParticipantID == userID

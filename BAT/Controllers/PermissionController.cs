@@ -17,30 +17,18 @@ namespace BAT.Controllers
         private static BATRepository _db = new BATRepository();
 
         [HttpGet]
-        [Route("api/permission/codeset/{codeSetID}")]
-        public System.Web.Mvc.JsonResult GetInputs(int codeSetID)
+        [Route("api/permission/codeset/{userID}")]
+        public System.Web.Mvc.JsonResult GetCodeSetsSharedWithUser(string userID)
         {
-            var codeSetPermissions = _db.GetParticipatingCodeSets(string userID);
+            var sharedCodeSets = _db.GetParticipatingCodeSets(userID);
             var json = new System.Web.Mvc.JsonResult();
             json.Data = new
             {
-                codeSetPermissions
+                sharedCodeSets
             };
             return json;
         }
 
-        [HttpGet]
-        [Route("api/input/{codeSetID}")]
-        public System.Web.Mvc.JsonResult GetInputs(int codeSetID)
-        {
-            var inputs = _db.GetInputsByCodeSetID(codeSetID);
-            var json = new System.Web.Mvc.JsonResult();
-            json.Data = new
-            {
-                inputs
-            };
-            return json;
-        }
 
     }
 }
