@@ -29,6 +29,19 @@ namespace BAT.Controllers
             return json;
         }
 
+        [HttpGet]
+        [Route("api/permission/session/{userID}")]
+        public System.Web.Mvc.JsonResult GetSessionsSharedWithUser(string userID)
+        {
+            var sharedSessions = _db.GetSessionPermissionByUserID(userID);
+            var json = new System.Web.Mvc.JsonResult();
+            json.Data = new
+            {
+                sharedSessions
+            };
+            return json;
+        }
+
 
     }
 }
