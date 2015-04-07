@@ -2,17 +2,7 @@
     'use strict';
 
     angular.module('batApp')
-    .factory('sessionDataFactory', function ($rootScope, FIREBASE_URL, $http, $location) {
-
-        function _sessionUrl(id) {
-            if (id) {
-                return FIREBASE_URL + 'users/' + $rootScope.user.uid +
-                '/sessionData/' + id + '.json?auth=' + $rootScope.user.token;
-            } else {
-                return FIREBASE_URL + 'users/' + $rootScope.user.uid +
-                '/sessionData.json?auth=' + $rootScope.user.token;
-            }
-        }
+    .factory('sessionDataFactory', function ($rootScope, $http, $location) {
 
         function getSessionData(id, cb) {
             $http.get(_sessionUrl(id))

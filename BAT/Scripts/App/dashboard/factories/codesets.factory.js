@@ -4,6 +4,27 @@
     angular.module('batApp')
     .factory('codeSetFactory', function ($rootScope, $http, $location) {
 
+    //GET
+        function getCodeSet(id, cb) {
+            $http.get("api/codeset/id/" + id)
+            .success(function (data) {
+                cb(data);
+            })
+            .error(function (err) {
+                console.log(err);
+            });
+        }
+        function getAllCodeSets(cb) {
+            $http.get("api/codeset/" + $rootScope.userID)
+            .success(function (data) {
+                cb(data.data.codeSets);
+            })
+            .error(function (err) {
+                console.log(err);
+            });
+        }
+
+    //POST
         function createCodeSet(codeSet, cb) {
             $http.post(_batUrl(), codeSet)
             .success(function (data) {
@@ -15,26 +36,7 @@
             });
         }
 
-        function getCodeSet(id, cb) {
-            $http.get("api/codeset/id/" + id)
-            .success(function (data) {
-                cb(data);
-            })
-            .error(function (err) {
-                console.log(err);
-            });
-        }
-
-        function getAllCodeSets(cb) {
-            $http.get("api/codeset/" + $rootScope.userID)
-            .success(function (data) {
-                cb(data.data.codeSets);
-            })
-            .error(function (err) {
-                console.log(err);
-            });
-        }
-
+    //PUT
         function editCodeSet(id, codeSetId) {
             $http.put(_batUrl(id), codeSetId)
             .success(function (data) {
@@ -45,6 +47,7 @@
             });
         }
 
+        //DELETE
         function deleteCodeSet(codeSetId, cb) {
             $http.delete(_batUrl(codeSetId))
             .success(function () {
