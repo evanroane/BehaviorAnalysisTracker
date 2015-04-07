@@ -19,14 +19,14 @@
             .success(function (data) {
                 cb(data.data.codeSets);
             })
-            .error(function (err) {
+            .error(function(err) {
                 console.log(err);
             });
         }
 
     //POST
         function createCodeSet(codeSet, cb) {
-            $http.post(_batUrl(), codeSet)
+            $http.post("api/codeset/" + $rootScope.userID, codeSet)
             .success(function (data) {
                 console.log('code set sent to FB');
                 cb(data);

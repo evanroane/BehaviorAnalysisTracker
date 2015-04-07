@@ -318,6 +318,7 @@
     <Content Include="templates\dashboard\editsessiondata.html" />
     <Content Include="templates\dashboard\graphsessiondata.html" />
     <Content Include="templates\dashboard\managecodesets.html" />
+    <Content Include="templates\dashboard\newcodeset - Copy.html" />
     <Content Include="templates\dashboard\newcodeset.html" />
     <Content Include="templates\dashboard\newsession.html" />
     <Content Include="templates\dashboard\previoussessiondata.html" />

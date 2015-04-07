@@ -8,8 +8,8 @@
           $routeProvider.when('/managecodesets',
             {
                 templateUrl: '../../../templates/dashboard/managecodesets.html',
-                controller: 'ShowCodeSetController',
-                controllerAs: 'viewCodeSet',
+                controller: 'ReadCodeSetController',
+                controllerAs: 'codeSet',
                 private: true,
                 reloadOnSearch: false
             }

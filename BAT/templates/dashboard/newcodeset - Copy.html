@@ -26,6 +26,27 @@
           </label>
           <input type="text" ng-model="codeSetData.description" class="form-control">
         </div>
+        <div class="form-group has-success has-feedback" data-ng-repeat="input in codeSetData.inputs">
+          <label>
+            Input Name:
+          </label>
+          <input type="text" ng-model="input.name" class="form-control">
+          <label>Input Color:</label>
+          <select ng-model="input.color">
+            <option value="btn-primary" selected="selected">Blue</option>
+            <option value="btn-warning">Yellow</option>
+            <option value="btn-success">Green</option>
+            <option value="btn-danger">Red</option>
+          </select>
+          <a class="btn btn-default btn-xs" ng-click="deleteInput($index)">
+            Delete
+          </a>
+          <br>
+          <a class="btn btn-primary" ng-show="$last" ng-click="addNewInput()">
+            Add Another
+          </a>
+
+        </div>
       <hr>
       <a class="btn btn-primary btn-block" ng-click="codeSet.addNewCodeSet()">Save Code Set</a>
       </form>
