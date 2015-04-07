@@ -20,7 +20,6 @@
 
         codeSetFactory.getCodeSet($routeParams.id, function (data) {
             $scope.inputs = data.data.inputs;
-            //$scope.inputs = vm.codeSetData.inputs
         });
 
         vm.displayTimer = function () {

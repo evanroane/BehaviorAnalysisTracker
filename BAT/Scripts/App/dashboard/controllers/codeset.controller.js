@@ -4,7 +4,6 @@
     angular.module('batApp')
     .controller('CodeSetController', function ($scope, $location, codeSetFactory, SharedState) {
         var vm = this;
-
         SharedState.initialize($scope, "activeDropdown");
 
         $scope.codeSetData = {
@@ -27,7 +26,7 @@
             );
         };
 
-        $scope.deleteInput = function (index) {
+        $scope.deleteInput = function(index) {
             if ($scope.codeSetData.inputs.length > 1) {
                 $scope.codeSetData.inputs.splice(index, 1);
             }
@@ -36,15 +35,15 @@
             }
         };
 
-        vm.addNewCodeSet = function () {
+        vm.addNewCodeSet = function() {
             var inputs = $scope.codeSetData;
-            codeSetFactory.createCodeSet(inputs, function (data) {
+            codeSetFactory.createCodeSet(inputs, function(data) {
                 $location.path('/managecodesets');
             });
         };
     })
 
-    .controller('ShowCodeSetController', function ($rootScope, $scope, $routeParams, codeSetFactory) {
+    .controller('ShowCodeSetController', function($rootScope, $scope, $routeParams, codeSetFactory) {
         var vm = this;
         var id = $routeParams.id;
 
@@ -52,12 +51,11 @@
             $scope.codeSets = data;
         });
 
-        vm.removeCodeSet = function (codeSetId) {
-            codeSetFactory.deleteCodeSet(codeSetId, function () {
+        vm.removeCodeSet = function(codeSetId) {
+            codeSetFactory.deleteCodeSet(codeSetId, function() {
                 delete vm.codeSet[codeSetId];
             });
         };
-
     })
 
     .controller('EditCodeSetController', function ($scope, $routeParams, codeSetFactory) {
@@ -90,6 +88,6 @@
                 console.log("you can't have less than one");
             }
         };
-    })
+    });
 
 }());

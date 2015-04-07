@@ -261,13 +261,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\App\dashboard\controllers\analyzedata.controller.js" />
-    <Content Include="Scripts\App\dashboard\controllers\codesets.controller.js" />
-    <Content Include="Scripts\App\dashboard\factories\codesets.factory.js" />
+    <Content Include="Scripts\App\dashboard\controllers\download.controller.js" />
+    <Content Include="Scripts\App\dashboard\controllers\codeset.controller.js" />
+    <Content Include="Scripts\App\dashboard\controllers\input.controller.js" />
+    <Content Include="Scripts\App\dashboard\factories\codeset.factory.js" />
     <Content Include="Scripts\App\dashboard\dashboard.routes.js" />
-    <Content Include="Scripts\App\dashboard\controllers\datacollector.controller.js" />
+    <Content Include="Scripts\App\dashboard\controllers\behaviorevent.controller.js" />
     <Content Include="Scripts\App\dashboard\factories\behaviorevent.factory.js" />
-    <Content Include="Scripts\App\dashboard\controllers\sessiondata.controller.js" />
+    <Content Include="Scripts\App\dashboard\controllers\session.controller.js" />
     <Content Include="Scripts\App\dashboard\factories\session.factory.js" />
     <Content Include="Scripts\App\main.config.js" />
     <Content Include="Scripts\App\main.constants.js" />
@@ -324,10 +325,8 @@
     <Content Include="templates\dashboard\session.html" />
     <Content Include="templates\dashboard\sessiondatasummary.html" />
     <Content Include="templates\home.html" />
-    <Content Include="templates\login.html" />
     <Content Include="templates\logout.html" />
     <Content Include="templates\mydashboard.html" />
-    <Content Include="templates\sidebar.html" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

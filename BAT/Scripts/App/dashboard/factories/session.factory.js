@@ -2,8 +2,8 @@
     'use strict';
 
     angular.module('batApp')
-    .factory('sessionDataFactory', function ($rootScope, $http, $location) {
-
+    .factory('sessionFactory', function ($rootScope, $http, $location) {
+        //GET
         function getSessionData(id, cb) {
             $http.get(_sessionUrl(id))
             .success(function (data) {
@@ -14,6 +14,9 @@
             });
         }
 
+        //POST
+
+        //DELETE
         function deleteSessionData(sessionDataId, cb) {
             $http.delete(_sessionUrl(sessionDataId))
             .success(function () {
@@ -25,6 +28,7 @@
             });
         }
 
+        //PUT
         function editSessionData(id, sessionDataId) {
             $http.put(_sessionUrl(id), sessionDataId)
             .success(function (data) {

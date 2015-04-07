@@ -4,7 +4,7 @@
     angular.module('batApp')
       .config(function ($routeProvider) {
 
-          //Manage Code Sets:
+          //Code Sets:
           $routeProvider.when('/managecodesets',
             {
                 templateUrl: '../../../templates/dashboard/managecodesets.html',

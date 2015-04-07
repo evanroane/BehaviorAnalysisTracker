@@ -49,9 +49,7 @@
                 </div>
             </div>
         </div>
-
-
-    </div>
+      </div>
     
     <div class="app">
 
@@ -95,50 +93,14 @@
     <script src="~/Scripts/App/main.constants.js"></script>
     <script src="~/Scripts/App/main.controller.js"></script>
     <script src="~/Scripts/App/dashboard/dashboard.routes.js"></script>
-    <script src="~/Scripts/App/dashboard/datacollector.factory.js"></script>
-    <script src="~/Scripts/App/dashboard/datacollector.controller.js"></script>
-    <script src="~/Scripts/App/dashboard/codesets.factory.js"></script>
-    <script src="~/Scripts/App/dashboard/codesets.controller.js"></script>
-    <script src="~/Scripts/App/dashboard/sessiondata.factory.js"></script>
-    <script src="~/Scripts/App/dashboard/sessiondata.controller.js"></script>
-    <script src="~/Scripts/App/dashboard/analyzedata.controller.js"></script>
+    <script src="~/Scripts/App/dashboard/factories/behaviorevent.factory.js"></script>
+    <script src="~/Scripts/App/dashboard/factories/codesets.factory.js"></script>
+    <script src="~/Scripts/App/dashboard/factories/input.factory.js"></script>
+    <script src="~/Scripts/App/dashboard/factories/session.factory.js"></script>
+    <script src="~/Scripts/App/dashboard/controllers/codeset.controller.js"></script>
+    <script src="~/Scripts/App/dashboard/controllers/input.controller.js"></script>
+    <script src="~/Scripts/App/dashboard/controllers/session.controller.js"></script>
+    <script src="~/Scripts/App/dashboard/controllers/behaviorevent.controller.js"></script>
+    <script src="~/Scripts/App/dashboard/controllers/download.controller.js"></script>
 </body>
 </html>
-
-
-
-
-@*<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-</body>
-</html>*@
