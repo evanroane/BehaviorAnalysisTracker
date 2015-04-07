@@ -42,10 +42,14 @@ namespace BAT.Controllers
 
         [HttpPost]
         [Route("api/codeset/{userID}")]
-        public HttpResponseMessage CodeSet(string userID, [FromBody] CodeSet CS)
+        public HttpResponseMessage CodeSet(CodeSet CS)
         {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
             _db.CreateCodeSet(CS);
-            return new HttpResponseMessage(HttpStatusCode.OK);
+            return Request.CreateResponse(HttpStatusCode.Created);
         }
     }
 }

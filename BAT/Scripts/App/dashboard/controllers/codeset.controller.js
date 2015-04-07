@@ -17,13 +17,14 @@
             };
         })
 
-        .controller('CodeSetController', function ($scope, $location, codeSetFactory, SharedState) {
+        .controller('CodeSetController', function ($rootScope, $scope, $location, codeSetFactory, SharedState) {
         var vm = this;
         SharedState.initialize($scope, "activeDropdown");
 
         $scope.codeSetData = {
-            codeSetId: "",
-            description: ""
+            CodeSetName: "",
+            CodeSetDescription: "",
+            CodeSetOwner: $rootScope.userID
         };
 
 
