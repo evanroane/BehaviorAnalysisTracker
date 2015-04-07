@@ -3,6 +3,35 @@
 
     angular.module('batApp')
       .config(function ($routeProvider) {
+
+          //Manage Code Sets:
+          $routeProvider.when('/managecodesets',
+            {
+                templateUrl: '../../../templates/dashboard/managecodesets.html',
+                controller: 'ShowCodeSetController',
+                controllerAs: 'viewCodeSet',
+                private: true,
+                reloadOnSearch: false
+            }
+          );
+          $routeProvider.when('/codeset/:id/edit',
+          {
+              templateUrl: '../../../templates/dashboard/editcodeset.html',
+              controller: 'EditCodeSetController',
+              controllerAs: 'codeSet',
+              private: true,
+              reloadOnSearch: false
+          }
+          );
+          $routeProvider.when('/codeset/:id',
+            {
+                templateUrl: '../../../templates/dashboard/session.html',
+                controller: 'TimeController',
+                controllerAs: 'time',
+                private: true,
+                reloadOnSearch: false
+            }
+          );
           $routeProvider.when('/newcodeset',
             {
                 templateUrl: '../../../templates/dashboard/newcodeset.html',
@@ -12,6 +41,8 @@
                 reloadOnSearch: false
             }
           );
+
+          //Create Session
           $routeProvider.when('/newsession',
             {
                 templateUrl: '../../../templates/dashboard/newsession.html',
@@ -21,6 +52,8 @@
                 reloadOnSearch: false
             }
           );
+
+          //Previous Session Data:
           $routeProvider.when('/previoussessiondata',
             {
                 templateUrl: '../../../templates/dashboard/previoussessiondata.html',
@@ -57,34 +90,7 @@
                 reloadOnSearch: false
             }
           );
-          $routeProvider.when('/managecodesets',
-            {
-                templateUrl: '../../../templates/dashboard/managecodesets.html',
-                controller: 'ShowCodeSetController',
-                controllerAs: 'viewCodeSet',
-                private: true,
-                reloadOnSearch: false
-            }
-          );
-          
-          $routeProvider.when('/codeset/:id/edit',
-          {
-              templateUrl: '../../../templates/dashboard/editcodeset.html',
-              controller: 'EditCodeSetController',
-              controllerAs: 'codeSet',
-              private: true,
-              reloadOnSearch: false
-          }
-          );
-          $routeProvider.when('/codeset/:id',
-            {
-                templateUrl: '../../../templates/dashboard/session.html',
-                controller: 'TimeController',
-                controllerAs: 'time',
-                private: true,
-                reloadOnSearch: false
-            }
-          );
+
           $routeProvider.when('/sessiondata/:id/edit',
             {
                 templateUrl: '../../../templates/dashboard/editsessiondata.html',
@@ -94,5 +100,7 @@
                 reloadOnSearch: false
             }
           );
+
+          //Inter-Observer Agreement:
       })
 }());
