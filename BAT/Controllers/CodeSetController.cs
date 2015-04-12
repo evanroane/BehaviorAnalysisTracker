@@ -7,9 +7,11 @@ using System.Web.Http;
 using BAT.Models;
 using BAT.Repository;
 using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 
 namespace BAT.Controllers
 {
+    [Authorize]
     public class CodeSetController : ApiController
     {
         private static BATRepository _db = new BATRepository();
@@ -41,14 +43,19 @@ namespace BAT.Controllers
         }
 
         [HttpPost]
-        [Route("api/codeset/{userID}")]
-        public HttpResponseMessage CodeSet(CodeSet CS)
+        [Route("api/codeset/")]
+        public HttpResponseMessage Post([FromBody] string json)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            _db.CreateCodeSet(CS);
+            CodeSet webCodeSet = JsonConvert.DeserializeObject<CodeSet>(json);
+            CodeSet codeSet = new CodeSet();
+            codeSet.CodeSetName = webCodeSet.CodeSetName;
+            codeSet.CodeSetDescription = webCodeSet.CodeSetDescription;
+            codeSet.CodeSetOwner = webCodeSet.CodeSetOwner;
+            _db.CreateCodeSet(codeSet);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
     }
