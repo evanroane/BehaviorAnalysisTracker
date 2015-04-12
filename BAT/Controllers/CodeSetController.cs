@@ -50,11 +50,11 @@ namespace BAT.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            CodeSet webCodeSet = JsonConvert.DeserializeObject<CodeSet>(json);
-            CodeSet codeSet = new CodeSet();
-            codeSet.CodeSetName = webCodeSet.CodeSetName;
-            codeSet.CodeSetDescription = webCodeSet.CodeSetDescription;
-            codeSet.CodeSetOwner = webCodeSet.CodeSetOwner;
+            CodeSet codeSet = JsonConvert.DeserializeObject<CodeSet>(json);
+            //CodeSet codeSet = new CodeSet();
+            //codeSet.CodeSetName = webCodeSet.CodeSetName;
+            //codeSet.CodeSetDescription = webCodeSet.CodeSetDescription;
+            //codeSet.CodeSetOwner = webCodeSet.CodeSetOwner;
             _db.CreateCodeSet(codeSet);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
