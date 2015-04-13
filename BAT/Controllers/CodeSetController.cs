@@ -9,6 +9,7 @@ using BAT.Repository;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Linq;
 
 namespace BAT.Controllers
 {
@@ -19,28 +20,13 @@ namespace BAT.Controllers
 
         [HttpGet]
         [Route("api/codeset/{userID}")]
-        public System.Web.Mvc.JsonResult GetCodeSets(string userID)
+        public JArray GetCodeSets(string userID)
         {
-            var codeSets = _db.GetCodeSetByUserID(userID);
-            var json = new System.Web.Mvc.JsonResult();
-            json.Data = new
-            {
-                codeSets
-            };
+            List<CodeSet> codeSets = _db.GetCodeSetByUserID(userID);
+            string jsonString = JsonConvert.SerializeObject(codeSets, new StringEnumConverter());
+            JArray json = JArray.Parse(jsonString);
             return json;
         }
-
-        //[HttpGet]
-        //[Route("api/codeset/{userID}")]
-        //public  GetCodeSets(string userID)
-        //{
-        //    List<CodeSet> codeSets = _db.GetCodeSetByUserID(userID);
-        //    //var json = new System.Web.Mvc.JsonResult();
-        //    J
-        //    string json = JsonConvert.SerializeObject(codeSets, new StringEnumConverter());
-        //    return json;
-        //}
-
 
         [HttpGet]
         [Route("api/codeset/id/{codeSetID}")]
