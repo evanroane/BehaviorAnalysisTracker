@@ -8,6 +8,7 @@ using BAT.Models;
 using BAT.Repository;
 using Microsoft.AspNet.Identity;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace BAT.Controllers
 {
@@ -15,7 +16,7 @@ namespace BAT.Controllers
     public class CodeSetController : ApiController
     {
         private static BATRepository _db = new BATRepository();
-        
+
         [HttpGet]
         [Route("api/codeset/{userID}")]
         public System.Web.Mvc.JsonResult GetCodeSets(string userID)
@@ -28,6 +29,18 @@ namespace BAT.Controllers
             };
             return json;
         }
+
+        //[HttpGet]
+        //[Route("api/codeset/{userID}")]
+        //public  GetCodeSets(string userID)
+        //{
+        //    List<CodeSet> codeSets = _db.GetCodeSetByUserID(userID);
+        //    //var json = new System.Web.Mvc.JsonResult();
+        //    J
+        //    string json = JsonConvert.SerializeObject(codeSets, new StringEnumConverter());
+        //    return json;
+        //}
+
 
         [HttpGet]
         [Route("api/codeset/id/{codeSetID}")]
@@ -43,7 +56,7 @@ namespace BAT.Controllers
         }
 
         [HttpPost]
-        [Route("api/codeset/")]
+        [Route("api/codeset/post")]
         public HttpResponseMessage Post([FromBody] string json)
         {
             if (!ModelState.IsValid)
@@ -51,10 +64,19 @@ namespace BAT.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
             CodeSet codeSet = JsonConvert.DeserializeObject<CodeSet>(json);
-            //CodeSet codeSet = new CodeSet();
-            //codeSet.CodeSetName = webCodeSet.CodeSetName;
-            //codeSet.CodeSetDescription = webCodeSet.CodeSetDescription;
-            //codeSet.CodeSetOwner = webCodeSet.CodeSetOwner;
+            _db.CreateCodeSet(codeSet);
+            return Request.CreateResponse(HttpStatusCode.Created);
+        }
+
+        [HttpPut]
+        [Route("api/codeset/{id}/put")]
+        public HttpResponseMessage UpdateCodeSet([FromBody] string json)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            CodeSet codeSet = JsonConvert.DeserializeObject<CodeSet>(json);
             _db.CreateCodeSet(codeSet);
             return Request.CreateResponse(HttpStatusCode.Created);
         }
