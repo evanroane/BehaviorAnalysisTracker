@@ -30,14 +30,11 @@ namespace BAT.Controllers
 
         [HttpGet]
         [Route("api/codeset/id/{codeSetID}")]
-        public System.Web.Mvc.JsonResult GetInputsSetByCodeSetID(int codeSetID)
+        public JArray GetInputsSetByCodeSetID(int codeSetID)
         {
-            var inputs = _db.GetInputsByCodeSetID(codeSetID);
-            var json = new System.Web.Mvc.JsonResult();
-            json.Data = new
-            {
-                inputs
-            };
+            List<Input> inputs = _db.GetInputsByCodeSetID(codeSetID);
+            string jsonString = JsonConvert.SerializeObject(inputs, new StringEnumConverter());
+            JArray json = JArray.Parse(jsonString);
             return json;
         }
 
