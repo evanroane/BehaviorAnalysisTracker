@@ -29,8 +29,7 @@
         };
 
         $scope.addNewCodeSet = function() {
-            var CodeSet = '"' + JSON.stringify($scope.codeSetData).replace(/"/g, "'") + '"';
-            console.log(CodeSet);
+            var CodeSet = "'" + JSON.stringify($scope.codeSetData) + "'";
             codeSetFactory.createCodeSet(CodeSet, function (CodeSet) {
                 $location.path('/managecodesets');
             });
