@@ -24,42 +24,41 @@
         New Code Set
       </a>
     </div>
-    <div class="section" ng-repeat="(codeSetID, codeSet) in codeSets">
+    <div class="section" ng-repeat="(CodeSetID, codeSet) in codeSets">
       <div class="panel panel-default">
         <div class="panel-heading">
 
           <div class="btn-group pull-right" ui-state="activeDropdown">
-            <a ui-set="{activeDropdown: codeSetID}"
-            ui-scope-context="codeSetID"
-            class='btn'>
-            <i class="fa fa-chevron-circle-down fa-lg"></i>
-          </a>
-          <ul
-            class="dropdown-menu"
-            ui-outer-click="Ui.turnOff('activeDropdown')"
-            ui-outer-click-if="Ui.eq('activeDropdown', codeSetID)"
-            ui-scope-context="codeSetID"
-            ui-show="activeDropdown == codeSetID"
-            ui-turn-off="activeDropdown">
-            <li>
-              <a class="" href="/#/editcodeset/{{codeSet.codeSetID}}">
-                <i class="fa fa-pencil-square-o"></i>
-                Edit
+              <a ui-set="{activeDropdown: CodeSetID}"
+                 ui-scope-context="CodeSetID"
+                 class='btn'>
+                  <i class="fa fa-chevron-circle-down fa-lg"></i>
               </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-              <a class="" ng-click="viewCodeSet.removeCodeSet(codeSetId)">
-                <i class="fa fa-times-circle"></i>
-                Delete
-              </a>
-            </li>
-          </ul>
+              <ul class="dropdown-menu"
+                  ui-outer-click="Ui.turnOff('activeDropdown')"
+                  ui-outer-click-if="Ui.eq('activeDropdown', CodeSetID)"
+                  ui-scope-context="CodeSetID"
+                  ui-show="activeDropdown == CodeSetID"
+                  ui-turn-off="activeDropdown">
+                  <li>
+                      <a class="" href="/#/editcodeset/{{codeSet.CodeSetID}}">
+                          <i class="fa fa-pencil-square-o"></i>
+                          Edit
+                      </a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                      <a class="" ng-click="removeCodeSet(CodeSetID)">
+                          <i class="fa fa-times-circle"></i>
+                          Delete
+                      </a>
+                  </li>
+              </ul>
         </div>
-          <h3 class="panel-title"> {{codeSet.codeSetName}}</h3>
+          <h3 class="panel-title"> {{codeSet.CodeSetName}}</h3>
         </div>
         <div class="panel-body">
-          {{codeSet.codeSetDescription}}
+          {{codeSet.CodeSetDescription}}
         </div>
       </div>
     </div>
@@ -71,4 +70,3 @@
 
 
   </div>
-</div>

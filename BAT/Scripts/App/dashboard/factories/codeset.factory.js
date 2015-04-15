@@ -7,17 +7,17 @@
     //GET
         function getCodeSet(id, cb) {
             $http.get("api/codeset/id/" + id)
-            .success(function (data) {
+            .success(function(data) {
                 cb(data);
             })
-            .error(function (err) {
+            .error(function(err) {
                 console.log(err);
             });
         }
         function getAllCodeSets(cb) {
             $http.get("api/codeset/" + $rootScope.userID)
-            .success(function (data) {
-                cb(data.data.codeSets);
+            .success(function(data) {
+                cb(data);
             })
             .error(function(err) {
                 console.log(err);
@@ -25,11 +25,11 @@
         }
 
     //POST
-        function createCodeSet(codeSet, cb) {
-            $http.post("api/codeset/" + $rootScope.userID, codeSet)
-            .success(function (data) {
-                console.log('code set sent to FB');
-                cb(data);
+        function createCodeSet(CodeSet, cb) {
+            $http.post("api/codeset/post", CodeSet)
+            .success(function (codeSetData) {
+                cb(codeSetData);
+                console.log('code set sent to server');
             })
             .error(function (err) {
                 console.log(err);

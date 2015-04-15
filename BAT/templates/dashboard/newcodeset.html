@@ -18,17 +18,19 @@
       <form role="form" name="createCodeSet" ng-submit='createNewCodeSet()' novalidate>
         <div>
           <label>
-            Code Set Label:
+            Code Set Name:
           </label>
-          <input type="text" ng-model="codeSetData.codeSetId" class="form-control">
+          <input type="text" ng-model="codeSetData.CodeSetName" class="form-control">
           <label>
             Code Set Description:
           </label>
-          <input type="text" ng-model="codeSetData.description" class="form-control">
+          <input type="text" ng-model="codeSetData.CodeSetDescription" class="form-control">
         </div>
       <hr>
-      <a class="btn btn-primary btn-block" ng-click="codeSet.addNewCodeSet()">Save Code Set</a>
+      <a class="btn btn-primary btn-block" ng-click="addNewCodeSet()">Save Code Set</a>
       </form>
+        <br />
+        {{codeSetData}}
     </div>
   </div>
 </div>

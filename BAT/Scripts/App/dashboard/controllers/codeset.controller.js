@@ -2,19 +2,20 @@
     'use strict';
 
     angular.module('batApp')
-        .controller('ReadCodeSetController', function ($rootScope, $scope, $routeParams, codeSetFactory) {
-            var vm = this;
+        .controller('ReadCodeSetController', function ($http, $rootScope, $scope, $routeParams, codeSetFactory, SharedState) {
             var id = $routeParams.id;
+            SharedState.initialize($scope, "activeDropdown");
 
             codeSetFactory.getAllCodeSets(function (data) {
                 $scope.codeSets = data;
             });
 
-            vm.removeCodeSet = function (codeSetId) {
+            $scope.removeCodeSet = function (codeSetId) {
                 codeSetFactory.deleteCodeSet(codeSetId, function () {
-                    delete vm.codeSet[codeSetId];
+                    delete $scope.codeSet[codeSetId];
                 });
             };
+
         })
 
         .controller('CodeSetController', function ($rootScope, $scope, $location, codeSetFactory, SharedState) {
@@ -22,16 +23,15 @@
         SharedState.initialize($scope, "activeDropdown");
 
         $scope.codeSetData = {
-            CodeSetName: "",
-            CodeSetDescription: "",
-            CodeSetOwner: $rootScope.userID
+            'CodeSetName': '',
+            'CodeSetDescription': '',
+            'CodeSetOwner': $rootScope.userID
         };
 
-
-
-        vm.addNewCodeSet = function() {
-            var inputs = $scope.codeSetData;
-            codeSetFactory.createCodeSet(inputs, function(data) {
+        $scope.addNewCodeSet = function() {
+            var CodeSet = '"' + JSON.stringify($scope.codeSetData).replace(/"/g, "'") + '"';
+            console.log(CodeSet);
+            codeSetFactory.createCodeSet(CodeSet, function (CodeSet) {
                 $location.path('/managecodesets');
             });
         };

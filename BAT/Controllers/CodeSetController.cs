@@ -46,9 +46,16 @@ namespace BAT.Controllers
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
-            CodeSet codeSet = JsonConvert.DeserializeObject<CodeSet>(json);
-            _db.CreateCodeSet(codeSet);
-            return Request.CreateResponse(HttpStatusCode.Created);
+            if (String.IsNullOrEmpty(json))
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                CodeSet codeSet = JsonConvert.DeserializeObject<CodeSet>(json);
+                _db.CreateCodeSet(codeSet);
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
         }
 
         [HttpPut]

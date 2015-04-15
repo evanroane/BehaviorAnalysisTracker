@@ -2,6 +2,9 @@
     'use strict';
 
     angular.module('batApp')
+      .config(['$httpProvider', function ($httpProvider) {
+          $httpProvider.defaults.headers.post = {"Content-Type": "application/json"};
+      }])
       .config(function ($routeProvider) {
           $routeProvider.when('/',
             {
