@@ -258,15 +258,14 @@ namespace BAT.Repository
         }
 
         //CodeSet: Update
-        public void UpdateCodeSetName(CodeSet CS, string newName)
+        public void UpdateCodeSet(int id, CodeSet CS)
         {
-            CS.CodeSetName = newName;
-            _dbContext.SaveChanges();
-        }
-
-        public void UpdateCodeSetDescription(CodeSet CS, string newDescription)
-        {
-            CS.CodeSetDescription = newDescription;
+            var oldVersion = from CodeSet in _dbContext.CodeSets
+                        where CodeSet.CodeSetID == id
+                        select CodeSet;
+            CodeSet toBeEdited = (CodeSet)oldVersion;
+            toBeEdited.CodeSetName = CS.CodeSetName;
+            toBeEdited.CodeSetDescription = CS.CodeSetDescription;
             _dbContext.SaveChanges();
         }
 

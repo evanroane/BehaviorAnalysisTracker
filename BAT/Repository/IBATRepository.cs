@@ -53,10 +53,8 @@ namespace BAT.Repository
         CodeSet GetCodeSetByID(int id);
         CodeSet GetCodeSetByName(string name);
         //CodeSet: Update
-        void UpdateCodeSetName(CodeSet CS, string newName);
-
+        void UpdateCodeSet(int id, CodeSet CS);
         //CodeSet: Delete
-        void UpdateCodeSetDescription(CodeSet CS, string newDescription);
 
         //SessionPermissions: Create
         void CreateSessionPermission(SessionPermission SP);
