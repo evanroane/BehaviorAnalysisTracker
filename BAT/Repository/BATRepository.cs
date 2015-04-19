@@ -263,9 +263,9 @@ namespace BAT.Repository
             var oldVersion = from CodeSet in _dbContext.CodeSets
                         where CodeSet.CodeSetID == id
                         select CodeSet;
-            CodeSet toBeEdited = (CodeSet)oldVersion;
-            toBeEdited.CodeSetName = CS.CodeSetName;
-            toBeEdited.CodeSetDescription = CS.CodeSetDescription;
+            
+            oldVersion.CodeSetName = CS.CodeSetName;
+            oldVersion.CodeSetDescription = CS.CodeSetDescription;
             _dbContext.SaveChanges();
         }
 

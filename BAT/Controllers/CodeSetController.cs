@@ -55,7 +55,24 @@ namespace BAT.Controllers
         }
 
         [HttpPut]
-        [Route("api/codeset/{id}/put")]
+        [Route("api/codeset/put")]
+        public HttpResponseMessage put([FromBody] string json)
+        {
+            if (!ModelState.IsValid)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+            }
+            else
+            {
+                CodeSet codeSet = JsonConvert.DeserializeObject<CodeSet>(json);
+                int codeSetID = codeSet.CodeSetID;
+                _db.UpdateCodeSet(codeSetID, codeSet);
+                return Request.CreateResponse(HttpStatusCode.Created);
+            }
+        }
+
+        [HttpDelete]
+        [Route("api/codeset/{id}/delete")]
         public HttpResponseMessage UpdateCodeSet([FromBody] string json)
         {
             if (!ModelState.IsValid)
@@ -70,5 +87,6 @@ namespace BAT.Controllers
                 return Request.CreateResponse(HttpStatusCode.Created);
             }
         }
+
     }
 }
